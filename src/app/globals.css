@@ -126,3 +126,36 @@ body {
     opacity: 0.2;
   }
 }
+
+.midlevels-gradient {
+  background: linear-gradient(
+    180deg,
+    #15202e 0%,
+    #1a2535 25%,
+    #1e2a3a 50%,
+    #222d3d 75%,
+    #263040 100%
+  );
+}
+
+.streetlight {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: #fff8e0;
+  border-radius: 50%;
+  box-shadow:
+    0 0 10px rgba(255, 248, 224, 0.6),
+    0 0 20px rgba(255, 248, 224, 0.3);
+  z-index: 5;
+}
+
+.streetlight-1 {
+  bottom: 30%;
+  left: 15%;
+}
+
+.streetlight-2 {
+  bottom: 40%;
+  right: 20%;
+}
