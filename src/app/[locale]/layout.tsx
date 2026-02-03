@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import { ReactNode } from "react";
 import { JetBrains_Mono, Instrument_Sans } from "next/font/google";
+import { NextIntlClientProvider } from "next-intl";
+import { getMessages } from "next-intl/server";
 import "../globals.css";
 import LanguageToggle from "@/components/LanguageToggle";
 
@@ -73,14 +75,17 @@ export default async function RootLayout({
   params,
 }: LayoutProps) {
   const { locale } = await params;
+  const messages = await getMessages();
 
   return (
     <html lang={locale} className={`${jetbrainsMono.variable} ${instrumentSans.variable}`}>
       <body className="bg-bg text-text font-sans safe-area-inset-top safe-area-inset-bottom prevent-zoom">
-        <div className="fixed top-4 right-4 z-50">
-          <LanguageToggle />
-        </div>
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          <div className="fixed top-4 right-4 z-50">
+            <LanguageToggle />
+          </div>
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );
