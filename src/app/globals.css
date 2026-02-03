@@ -84,3 +84,45 @@ body {
     transform: translateX(10%);
   }
 }
+
+.skyline-gradient {
+  background: linear-gradient(
+    180deg,
+    #0a1628 0%,
+    #0f1f3a 30%,
+    #15202e 60%,
+    #1a2535 100%
+  );
+}
+
+.aviation-light {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #ff3333;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #ff3333;
+  animation: aviationBlink 2s ease-in-out infinite;
+  z-index: 5;
+}
+
+.aviation-light-1 {
+  top: 15%;
+  left: 25%;
+}
+
+.aviation-light-2 {
+  top: 20%;
+  right: 30%;
+  animation-delay: 1s;
+}
+
+@keyframes aviationBlink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+}
