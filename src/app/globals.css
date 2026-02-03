@@ -159,3 +159,14 @@ body {
   bottom: 40%;
   right: 20%;
 }
+
+.street-gradient {
+  background: linear-gradient(
+    180deg,
+    #1e2a3a 0%,
+    #222d3d 20%,
+    #1a1a2e 40%,
+    #151515 70%,
+    #0a0a0a 100%
+  );
+}
