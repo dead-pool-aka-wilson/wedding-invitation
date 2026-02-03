@@ -34,8 +34,8 @@ const config: Config = {
         rose: "#e5aea9",
       },
       fontFamily: {
-        mono: ["JetBrains Mono", "monospace"],
-        sans: ["Instrument Sans", "-apple-system", "sans-serif"],
+        mono: ["var(--font-mono)", "JetBrains Mono", "monospace"],
+        sans: ["var(--font-sans)", "Instrument Sans", "-apple-system", "sans-serif"],
       },
     },
   },

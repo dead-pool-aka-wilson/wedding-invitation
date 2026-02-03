@@ -109,3 +109,34 @@ bun --hot ./index.ts
 ```
 
 For more information, read the Bun API docs in `node_modules/bun-types/docs/**.mdx`.
+
+## Background Tasks (oh-my-opencode / opencode)
+
+**RULE: All background tasks MUST connect with tmux.**
+
+When running long-running or background tasks:
+1. Create a tmux session: `tmux new-session -d -s <session-name>`
+2. Run the task in a tmux window: `tmux send-keys -t <session>:<window> "<command>" Enter`
+3. User can monitor with: `tmux attach -t <session-name>`
+
+Example workflow:
+```bash
+# Create session for dev work
+tmux new-session -d -s wedding-dev -n main
+
+# Run dev server in background
+tmux new-window -t wedding-dev -n dev
+tmux send-keys -t wedding-dev:dev "bun run dev" Enter
+
+# Run tests in watch mode
+tmux new-window -t wedding-dev -n test
+tmux send-keys -t wedding-dev:test "bun test --watch" Enter
+
+# Check output
+tmux capture-pane -p -t wedding-dev:test
+```
+
+This allows users to:
+- Monitor task progress in real-time
+- See logs and errors immediately
+- Attach/detach from sessions as needed

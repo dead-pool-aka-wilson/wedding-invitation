@@ -1,4 +1,4 @@
-import { test, expect } from "bun:test";
+import { test, expect } from "vitest";
 import { locales, defaultLocale } from "./config";
 
 test("locales should include ko and en", () => {

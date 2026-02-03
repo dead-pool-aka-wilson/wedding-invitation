@@ -1,3 +1,0 @@
-module.exports=[70066,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(81336);a.n(d("[project]/Dev/wedding-card/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},61622,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(81336);a.n(d("[project]/Dev/wedding-card/node_modules/next/dist/client/components/builtin/global-error.js"))},65939,a=>{"use strict";a.i(70066);var b=a.i(61622);a.n(b)}];
-
-//# sourceMappingURL=4fe81_next_dist_client_components_builtin_global-error_d32e0338.js.map
