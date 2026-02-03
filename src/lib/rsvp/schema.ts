@@ -3,9 +3,11 @@ import { z } from "zod";
 export const rsvpSchema = z.object({
   name: z.string().min(1, "Name is required").max(100),
   phone: z.string().min(1, "Phone is required").max(20),
-  attendance: z.enum(["yes", "no", "maybe"]),
+  side: z.enum(["groom", "bride"]),
+  attendance: z.enum(["yes", "no"]),
   guestCount: z.number().int().min(1).max(10).default(1),
-  dietaryRestrictions: z.string().max(500).optional(),
+  busToVenue: z.enum(["use", "self"]).optional(),
+  busFromVenue: z.enum(["sameDay", "nextMorning", "self"]).optional(),
   message: z.string().max(1000).optional(),
 });
 
