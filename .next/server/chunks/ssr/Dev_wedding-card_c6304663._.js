@@ -1,0 +1,3 @@
+module.exports=[39399,a=>{a.n(a.i(46181))},18e3,a=>{a.n(a.i(21024))},45238,a=>{a.n(a.i(55576))},19645,a=>{"use strict";var b=a.i(58302);function c(){return(0,b.jsx)("main",{className:"min-h-screen bg-bg text-text",children:(0,b.jsx)("div",{className:"flex items-center justify-center min-h-screen",children:(0,b.jsx)("h1",{className:"text-4xl font-bold text-text-bright",children:"Wedding Invitation"})})})}a.s(["default",()=>c])}];
+
+//# sourceMappingURL=Dev_wedding-card_c6304663._.js.map

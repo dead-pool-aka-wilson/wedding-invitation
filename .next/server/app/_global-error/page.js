@@ -1,0 +1,10 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_global-error/page.js")
+R.c("server/chunks/ssr/4fe81_e32d5b32._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__2204ae2a._.js")
+R.c("server/chunks/ssr/4fe81_next_dist_58db2264._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__7372b7aa._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__72bad309._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__06d1adda._.js")
+R.c("server/chunks/ssr/Dev_wedding-card__next-internal_server_app__global-error_page_actions_304088e0.js")
+R.m(87958)
+module.exports=R.m(87958).exports

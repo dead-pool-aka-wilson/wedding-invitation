@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/4fe81_next_dist_client_components_builtin_2df251c8._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__2204ae2a._.js")
+R.c("server/chunks/ssr/4fe81_next_dist_8e027f13._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__7372b7aa._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__72bad309._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__06d1adda._.js")
+R.c("server/chunks/ssr/4fe81_68949880._.js")
+R.c("server/chunks/ssr/4fe81_next_dist_client_components_ab658c20._.js")
+R.c("server/chunks/ssr/4fe81_next_dist_client_components_builtin_forbidden_39ad14ac.js")
+R.c("server/chunks/ssr/Dev_wedding-card__next-internal_server_app__not-found_page_actions_8dcc8c9f.js")
+R.m(23579)
+module.exports=R.m(23579).exports
