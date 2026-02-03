@@ -17,3 +17,18 @@ body {
   color: #c0c5cf;
   font-family: "Instrument Sans", -apple-system, sans-serif;
 }
+
+.neon-frame {
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow:
+    0 0 8px rgba(255, 176, 32, 0.3),
+    0 0 16px rgba(255, 176, 32, 0.15),
+    inset 0 0 1px rgba(255, 176, 32, 0.5);
+  border: 1px solid rgba(255, 176, 32, 0.25);
+}
+
+.warm-tint {
+  filter: sepia(0.1) saturate(1.1) brightness(0.95);
+}
