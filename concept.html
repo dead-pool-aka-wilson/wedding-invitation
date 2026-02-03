@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HK Parallax × Wedding Invitation — Scene-Flow Mapping v3</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#06080d;--surface:#0c0f15;--surface2:#12151c;--surface3:#181c24;
+  --border:rgba(255,255,255,0.06);--border-hi:rgba(255,255,255,0.12);
+  --text:#c0c5cf;--dim:rgba(255,255,255,0.35);--bright:#edf0f5;
+  --cyan:#00d4ff;--pink:#ff3d8a;--amber:#ffb020;--green:#2dda6e;
+  --red:#ff4040;--purple:#a78bfa;--yellow:#ffe066;--rose:#e5aea9;
+  --mono:'JetBrains Mono',monospace;--sans:'Instrument Sans',-apple-system,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:1.6;}
+::selection{background:rgba(0,212,255,0.2);}
+
+/* ── HERO ── */
+.hero{padding:72px 32px 56px;text-align:center;border-bottom:1px solid var(--border);background:radial-gradient(ellipse at 50% 130%,rgba(0,212,255,0.03) 0%,transparent 60%);}
+.hero-badge{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);border:1px solid rgba(0,212,255,0.2);padding:5px 14px;border-radius:20px;margin-bottom:20px;background:rgba(0,212,255,0.03);}
+.hero h1{font-size:32px;font-weight:700;color:var(--bright);letter-spacing:-0.5px;margin-bottom:10px;}
+.hero h1 span{background:linear-gradient(90deg,var(--cyan),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{font-size:14px;color:var(--dim);max-width:600px;margin:0 auto 28px;}
+.meta-row{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;}
+.meta-row div{font-family:var(--mono);font-size:12px;color:var(--text);}
+.meta-row div span{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);margin-bottom:3px;}
+
+/* ── SECTION ── */
+.section{max-width:1200px;margin:0 auto;padding:56px 20px;border-bottom:1px solid var(--border);}
+.section-tag{font-family:var(--mono);font-size:10px;letter-spacing:4px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px;}
+.section h2{font-size:21px;font-weight:700;color:var(--bright);margin-bottom:6px;}
+.section>p{color:var(--dim);font-size:13px;margin-bottom:28px;max-width:680px;}
+
+/* ── CHANGELOG ── */
+.cl-box{max-width:1200px;margin:20px auto 0;padding:0 20px;}
+.cl-inner{background:rgba(0,212,255,0.025);border:1px solid rgba(0,212,255,0.1);border-radius:8px;padding:14px 18px;font-size:12px;}
+.cl-inner strong{color:var(--cyan);font-family:var(--mono);font-size:10px;letter-spacing:1px;}
+.cl-inner ul{margin:6px 0 0 18px;color:var(--dim);line-height:1.8;}
+.cl-inner li b{color:var(--amber);font-family:var(--mono);font-size:10px;}
+
+/* ══════ MAIN FLOW DIAGRAM ══════ */
+.flow-container{position:relative;}
+
+/* The vertical "strip" on the left */
+.scene-strip{position:absolute;left:0;top:0;bottom:0;width:140px;}
+@media(max-width:900px){.scene-strip{display:none;}.flow-cards{margin-left:0!important;}}
+.strip-zone{position:absolute;left:0;width:140px;border-radius:8px;overflow:hidden;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:12px 8px;transition:border-color 0.3s;}
+.strip-zone:hover{border-color:var(--border-hi);}
+.strip-zone .sz-label{font-family:var(--mono);font-size:8px;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;}
+.strip-zone .sz-px{font-family:var(--mono);font-size:9px;color:var(--dim);}
+
+/* connector lines */
+.strip-connector{position:absolute;left:140px;width:24px;border-top:1px dashed rgba(255,255,255,0.08);}
+
+/* Flow cards on the right */
+.flow-cards{margin-left:180px;position:relative;}
+.flow-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin-bottom:20px;overflow:hidden;transition:border-color 0.3s;}
+.flow-card:hover{border-color:var(--border-hi);}
+.fc-header{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap;}
+.fc-screen{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:1px;padding:3px 8px;border-radius:4px;white-space:nowrap;}
+.fc-header h3{font-size:15px;font-weight:600;color:var(--bright);flex:1;min-width:140px;}
+.fc-zone-tag{font-family:var(--mono);font-size:9px;letter-spacing:1px;padding:3px 8px;border-radius:3px;white-space:nowrap;}
+.fc-body{padding:20px;display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+@media(max-width:700px){.fc-body{grid-template-columns:1fr;}}
+.fc-col h4{font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;}
+.fc-col p{font-size:12px;color:var(--dim);line-height:1.8;margin-bottom:8px;}
+.fc-col p:last-child{margin-bottom:0;}
+
+/* Asset chips */
+.asset-chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;}
+.chip{font-family:var(--mono);font-size:9px;padding:3px 7px;border-radius:3px;border:1px solid;white-space:nowrap;}
+.chip-photo{color:var(--cyan);border-color:rgba(0,212,255,0.25);background:rgba(0,212,255,0.06);}
+.chip-css{color:var(--purple);border-color:rgba(167,139,250,0.25);background:rgba(167,139,250,0.06);}
+.chip-dynamic{color:var(--amber);border-color:rgba(255,176,32,0.25);background:rgba(255,176,32,0.06);}
+.chip-canvas{color:var(--pink);border-color:rgba(255,61,138,0.25);background:rgba(255,61,138,0.06);}
+.chip-new{color:var(--green);border-color:rgba(45,218,110,0.25);background:rgba(45,218,110,0.06);}
+
+/* Behavior tags */
+.beh-tag{display:inline-block;font-family:var(--mono);font-size:9px;padding:2px 6px;border-radius:3px;margin-right:4px;margin-bottom:4px;}
+.beh-scroll{background:rgba(0,212,255,0.08);color:var(--cyan);border:1px solid rgba(0,212,255,0.15);}
+.beh-auto{background:rgba(167,139,250,0.08);color:var(--purple);border:1px solid rgba(167,139,250,0.15);}
+.beh-interact{background:rgba(255,176,32,0.08);color:var(--amber);border:1px solid rgba(255,176,32,0.15);}
+
+/* Screen colors */
+.scr-cover{background:rgba(74,111,165,0.12);color:#7baaf7;}
+.scr-greet{background:rgba(0,212,255,0.08);color:var(--cyan);}
+.scr-date{background:rgba(0,212,255,0.08);color:var(--cyan);}
+.scr-loc{background:rgba(255,61,138,0.08);color:var(--pink);}
+.scr-gallery{background:rgba(255,176,32,0.08);color:var(--amber);}
+.scr-account{background:rgba(255,176,32,0.08);color:var(--amber);}
+.scr-end{background:rgba(255,64,64,0.08);color:var(--red);}
+.scr-rsvp{background:rgba(45,218,110,0.08);color:var(--green);}
+
+/* Zone bg colors for strip */
+.sz-sky{background:linear-gradient(180deg,#050810,#0a1628);}.sz-sky .sz-label{color:#7baaf7;}
+.sz-skyline{background:linear-gradient(180deg,#0a1628,#15202e);}.sz-skyline .sz-label{color:var(--cyan);}
+.sz-mid{background:linear-gradient(180deg,#15202e,#1e2a3a);}.sz-mid .sz-label{color:var(--pink);}
+.sz-street{background:linear-gradient(180deg,#1e2a3a,#151515);}.sz-street .sz-label{color:var(--amber);}
+.sz-ground{background:linear-gradient(180deg,#151515,#080808);}.sz-ground .sz-label{color:var(--red);}
+
+/* ── PHONE PREVIEW ── */
+.preview-row{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:32px 0;}
+.preview-phone{width:200px;flex:0 0 200px;}
+.preview-phone .p-label{font-family:var(--mono);font-size:9px;letter-spacing:1px;color:var(--dim);text-align:center;margin-bottom:8px;text-transform:uppercase;}
+.phone-frame{width:200px;height:400px;border-radius:24px;border:5px solid #222;overflow:hidden;position:relative;background:#0a0e1a;}
+.phone-frame::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:44px;height:14px;background:#222;border-radius:8px;z-index:20;}
+.phone-screen{width:100%;height:100%;overflow:hidden;position:relative;}
+
+/* Mini scene layers inside phone */
+.mini-sky{position:absolute;top:0;left:0;right:0;height:100%;z-index:1;}
+.mini-buildings{position:absolute;bottom:0;left:0;right:0;height:60%;z-index:2;}
+.mini-bld{position:absolute;bottom:0;background:rgba(15,25,40,0.9);border-top:1px solid rgba(0,212,255,0.1);}
+.mini-content{position:absolute;top:0;left:0;right:0;bottom:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:36px 16px 16px;text-align:center;}
+.mini-neon{position:absolute;font-family:var(--mono);font-size:6px;font-weight:700;padding:1px 3px;border-radius:1px;z-index:5;}
+.mini-tram{position:absolute;width:24px;height:14px;background:var(--red);border-radius:2px;z-index:6;box-shadow:0 0 6px rgba(255,64,64,0.3);}
+.mini-window{position:absolute;width:3px;height:2px;border-radius:0.5px;z-index:3;}
+.mini-window.on{background:var(--yellow);box-shadow:0 0 2px rgba(255,224,102,0.4);}
+.mini-window.off{background:rgba(255,255,255,0.04);}
+
+/* ── RSVP OVERLAY SECTION ── */
+.rsvp-section{background:var(--surface2);border:1px solid var(--border);border-radius:12px;padding:24px;margin-top:32px;}
+.rsvp-section h3{font-size:16px;font-weight:600;color:var(--bright);margin-bottom:6px;}
+.rsvp-section>p{font-size:12px;color:var(--dim);margin-bottom:20px;}
+.rsvp-flow{display:flex;gap:12px;overflow-x:auto;padding-bottom:12px;}
+.rsvp-step{flex:0 0 160px;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:14px;text-align:center;}
+.rsvp-step .step-num{font-family:var(--mono);font-size:9px;letter-spacing:2px;color:var(--green);margin-bottom:6px;}
+.rsvp-step .step-title{font-size:13px;color:var(--bright);margin-bottom:4px;}
+.rsvp-step .step-desc{font-size:11px;color:var(--dim);line-height:1.5;}
+.rsvp-arrow{display:flex;align-items:center;color:rgba(255,255,255,0.15);font-size:18px;flex:0 0 auto;}
+
+/* ── ASSET CONNECTION TABLE ── */
+.conn-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:16px;}
+.conn-table th{font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--dim);text-align:left;padding:8px 10px;border-bottom:2px solid var(--border-hi);position:sticky;top:0;background:var(--bg);}
+.conn-table td{padding:8px 10px;border-bottom:1px solid var(--border);vertical-align:top;}
+.conn-table .mono{font-family:var(--mono);font-size:11px;}
+.conn-table .conn-zone{font-family:var(--mono);font-weight:700;font-size:10px;padding:2px 7px;border-radius:3px;display:inline-block;}
+.conn-table .conn-edge{font-family:var(--mono);font-size:10px;color:var(--dim);}
+
+/* ── FOOTER ── */
+.footer{padding:36px;text-align:center;border-top:1px solid var(--border);}
+.footer p{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:2px;text-transform:uppercase;}
+</style>
+</head>
+<body>
+
+<!-- ════════ HERO ════════ -->
+<div class="hero">
+  <div class="hero-badge">Scene-Flow Mapping v3.0</div>
+  <h1>HK Parallax <span>× Wedding Invitation</span></h1>
+  <p>Mapping the wireframe user flow onto the Hong Kong vertical descent. Every section of the invitation lives inside one continuous, connected night scene.</p>
+  <div class="meta-row">
+    <div><span>Concept</span>Sky-to-Street Descent</div>
+    <div><span>Wireframe Screens</span>14 screens</div>
+    <div><span>Parallax Zones</span>5 connected zones</div>
+    <div><span>Flow Type</span>Scroll + Modal RSVP</div>
+  </div>
+</div>
+
+<!-- CHANGELOG -->
+<div class="cl-box">
+  <div class="cl-inner">
+    <strong>CHANGE LOG — v3.0</strong>
+    <ul>
+      <li><b>MAPPED</b> All 14 wireframe screens to 5 HK parallax zones — content sections repositioned to fit the scene narrative</li>
+      <li><b>DEFINED</b> Cross-zone asset connections — how each image/layer stitches together for seamless visual continuity</li>
+      <li><b>SEPARATED</b> RSVP flow (screens 10–14) as a frosted-glass modal overlay on top of the frozen parallax scene</li>
+      <li><b>ADDED</b> Edge-blending rules for zone transitions — no visible seams between sections</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ════════ KEY PRINCIPLE ════════ -->
+<div class="section">
+  <div class="section-tag">Core Principle</div>
+  <h2>One Scene, One Scroll</h2>
+  <p>The entire wedding invitation is a single vertical scroll. There are no "pages" — the guest descends from the night sky to the street puddle, and the invitation content is embedded within the scene. Wireframe box positions adapt to fit the HK concept; only the user flow order is preserved.</p>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;margin-bottom:24px;">
+    <h4 style="font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--cyan);margin-bottom:12px;">HOW THE SCENE CONNECTS</h4>
+    <p style="font-size:13px;color:var(--text);line-height:1.9;">
+      The background is NOT 5 separate images. It is one continuous vertical composition (360×8000px) built from overlapping layers. Each zone's background gradient <strong>bleeds into the next</strong> — navy sky fades into building silhouettes, which fade into mid-level alleys, which fade into neon streets, which fade into wet ground. The parallax layers (clouds, buildings, neon signs, tram) are placed at absolute positions within this continuous canvas. As the user scrolls, they move at different speeds — but they're all part of the same scene. The wedding content (text cards, gallery, maps) floats on top with semi-transparent glass cards.
+    </p>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:20px;">
+    <h4 style="font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--amber);margin-bottom:12px;">CONTENT CARD STYLE</h4>
+    <p style="font-size:13px;color:var(--text);line-height:1.9;">
+      All wedding content (names, dates, location, gallery, accounts) appears in <strong>frosted-glass cards</strong> — <code style="font-family:var(--mono);font-size:11px;background:rgba(255,255,255,0.05);padding:1px 5px;border-radius:3px;color:var(--cyan);">backdrop-filter: blur(20px); background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1)</code>. This ensures readability while letting the scene show through. Cards are centered horizontally (max-width: 320px on mobile) and spaced vertically with generous margins so the scene breathes between sections.
+    </p>
+  </div>
+</div>
+
+<!-- ════════ SCENE → WIREFRAME MAPPING ════════ -->
+<div class="section">
+  <div class="section-tag">Section 01</div>
+  <h2>Scene → Wireframe Mapping</h2>
+  <p>Each wireframe screen is assigned to a parallax zone. The scene position, surrounding assets, and scroll-driven behaviors are specified for each.</p>
+
+  <div class="flow-container" style="position:relative;min-height:2800px;">
+
+    <!-- LEFT: Scene strip -->
+    <div class="scene-strip">
+      <div class="strip-zone sz-sky" style="top:0;height:180px;">
+        <div class="sz-label">Zone 01 — Sky</div>
+        <div class="sz-px">0–800px</div>
+      </div>
+      <div class="strip-connector" style="top:90px;"></div>
+
+      <div class="strip-zone sz-skyline" style="top:200px;height:400px;">
+        <div class="sz-label">Zone 02 — Skyline</div>
+        <div class="sz-px">800–2400px</div>
+      </div>
+      <div class="strip-connector" style="top:400px;"></div>
+
+      <div class="strip-zone sz-mid" style="top:620px;height:500px;">
+        <div class="sz-label">Zone 03 — Mid-Levels</div>
+        <div class="sz-px">2400–4500px</div>
+      </div>
+      <div class="strip-connector" style="top:870px;"></div>
+
+      <div class="strip-zone sz-street" style="top:1140px;height:700px;">
+        <div class="sz-label">Zone 04 — Street</div>
+        <div class="sz-px">4500–6800px</div>
+      </div>
+      <div class="strip-connector" style="top:1490px;"></div>
+
+      <div class="strip-zone sz-ground" style="top:1860px;height:360px;">
+        <div class="sz-label">Zone 05 — Ground</div>
+        <div class="sz-px">6800–8000px</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: Flow cards -->
+    <div class="flow-cards">
+
+      <!-- ═══ SCREEN 1: COVER → ZONE 01 ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-cover">SCR 1</div>
+          <h3>Cover — 커버</h3>
+          <div class="fc-zone-tag" style="background:rgba(74,111,165,0.1);color:#7baaf7;">ZONE 01 · SKY</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:#7baaf7;">Wedding Content</h4>
+            <p>The invitation opens to a dark sky. The couple's names fade in at the center — large, elegant typography glowing softly against the night. Below the names: the wedding date. At the very bottom: a scroll-down hint with animated arrow.</p>
+            <p><strong>No cover photo box</strong> — the HK night sky IS the cover visual. Stars and clouds replace the static image placeholder. The names float in the sky like a luminous sign.</p>
+            <p style="font-family:var(--mono);font-size:11px;color:var(--rose);">Names: "지훈 ♥ 수진"<br/>Date: "2025. 4. 4 토요일"<br/>↓ scroll down</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:#7baaf7;">Scene Assets Behind</h4>
+            <p>Deep navy-black gradient. Sparse dim stars. Two cloud wisp layers drifting in opposite directions. Warm city glow at bottom edge hints at what's below.</p>
+            <div class="asset-chips">
+              <span class="chip chip-css">sky_gradient</span>
+              <span class="chip chip-photo">stars_overlay.png</span>
+              <span class="chip chip-photo">cloud_wisps_01.png</span>
+              <span class="chip chip-photo">cloud_wisps_02.png</span>
+              <span class="chip chip-css">city_glow_gradient</span>
+              <span class="chip chip-canvas">rain_particles_sparse</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-scroll">clouds drift on scroll</span>
+              <span class="beh-tag beh-auto">rain loop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 2-3: GREETING → ZONE 02 ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-greet">SCR 2–3</div>
+          <h3>Greeting Message — 인사말</h3>
+          <div class="fc-zone-tag" style="background:rgba(0,212,255,0.08);color:var(--cyan);">ZONE 02 · SKYLINE TOP</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:var(--cyan);">Wedding Content</h4>
+            <p>As the guest scrolls past the sky, skyscraper peaks emerge. Between the towers, a frosted-glass card appears with the couple's greeting text.</p>
+            <p>The greeting text is centered, elegant. The towers frame it on both sides — the card sits in the "canyon" between buildings. Parents' names appear below the greeting.</p>
+            <p style="font-family:var(--mono);font-size:11px;color:var(--rose);">Content: Greeting text<br/>Parents: "◯◯◯ · ◯◯◯의 아들 지훈<br/>◯◯◯ · ◯◯◯의 딸 수진"</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:var(--cyan);">Scene Assets Behind</h4>
+            <p>Far skyline silhouette (Kowloon). Main tower cutouts (IFC, BoC). Haze band between far/near layers. Aviation lights blinking. Window lights at 70% lit — early evening mood.</p>
+            <div class="asset-chips">
+              <span class="chip chip-photo">skyline_far_silhouette.png</span>
+              <span class="chip chip-photo">skyline_mid_towers.png</span>
+              <span class="chip chip-photo">haze_band.png</span>
+              <span class="chip chip-css">aviation_lights</span>
+              <span class="chip chip-dynamic">window_grid_towers 💡</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-scroll">windows toggling</span>
+              <span class="beh-tag beh-auto">aviation blink</span>
+              <span class="beh-tag beh-auto">window flicker</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 4: DATE/TIME → ZONE 02 BOTTOM ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-date">SCR 4</div>
+          <h3>Date & Time — 날짜/시간</h3>
+          <div class="fc-zone-tag" style="background:rgba(0,212,255,0.08);color:var(--cyan);">ZONE 02 · SKYLINE BOTTOM</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:var(--cyan);">Wedding Content</h4>
+            <p>A glass info card with calendar icon, date, and time. Positioned lower in the skyline zone as buildings become more detailed (closer). The close-framing buildings on left and right create a focused "frame" for the date card.</p>
+            <p style="font-family:var(--mono);font-size:11px;color:var(--rose);">📅 2025년 4월 4일 토요일<br/>⏰ 오후 2시<br/>💒 ◯◯◯ 웨딩홀</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:var(--cyan);">Scene Assets Behind</h4>
+            <p>Close building edges (left + right) creating a corridor. Window lights now at ~60% lit. Towers recede slightly above. Buildings getting denser — transitioning toward mid-levels.</p>
+            <div class="asset-chips">
+              <span class="chip chip-photo">building_close_left.png</span>
+              <span class="chip chip-photo">building_close_right.png</span>
+              <span class="chip chip-dynamic">window_grid_close 💡</span>
+              <span class="chip chip-photo">window_glow_overlay.png</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-scroll">windows dimming as scroll continues</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 5: LOCATION → ZONE 03 ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-loc">SCR 5</div>
+          <h3>Location & Map — 오시는 길</h3>
+          <div class="fc-zone-tag" style="background:rgba(255,61,138,0.08);color:var(--pink);">ZONE 03 · MID-LEVELS</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:var(--pink);">Wedding Content</h4>
+            <p>The Mid-Levels Escalator zone naturally evokes "navigation" and "getting there" — perfect for the location section. A glass card with venue name, address, and an embedded map.</p>
+            <p>The escalator structure runs alongside the card — symbolically guiding the guest toward the venue. SoHo shopfronts behind add warmth.</p>
+            <p>Below the map: transportation info (bus, subway, parking), styled as small info-row cards — matching the wireframe's info-card pattern.</p>
+            <p style="font-family:var(--mono);font-size:11px;color:var(--rose);">📍 Venue name + address<br/>🗺 Map embed (Kakao/Naver)<br/>🚗 Parking, 🚇 Subway, 🚌 Bus</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:var(--pink);">Scene Assets Behind</h4>
+            <p>Dense apartment buildings background. Escalator structure running vertically (center-left). Fluorescent canopy glow. SoHo shopfronts flanking. Street lights at full brightness (100%). Close railing in foreground for depth. Pedestrian silhouettes on escalator.</p>
+            <div class="asset-chips">
+              <span class="chip chip-photo">midlevel_buildings_bg.png</span>
+              <span class="chip chip-photo">escalator_structure.png</span>
+              <span class="chip chip-photo">escalator_glow.png</span>
+              <span class="chip chip-photo">soho_shopfronts.png</span>
+              <span class="chip chip-dynamic">streetlight_set_A ×2 🔦</span>
+              <span class="chip chip-dynamic">window_grid_apartments 💡</span>
+              <span class="chip chip-photo">escalator_railing_fg.png</span>
+              <span class="chip chip-canvas">pedestrian_shadows</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-scroll">street lights 100% → dimming starts</span>
+              <span class="beh-tag beh-scroll">apartment windows ~50% lit</span>
+              <span class="beh-tag beh-auto">TV flicker in some windows</span>
+              <span class="beh-tag beh-auto">pedestrian loop</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 6: GALLERY → ZONE 04 TOP ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-gallery">SCR 6</div>
+          <h3>Photo Gallery — 갤러리</h3>
+          <div class="fc-zone-tag" style="background:rgba(255,176,32,0.08);color:var(--amber);">ZONE 04 · STREET TOP</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:var(--amber);">Wedding Content</h4>
+            <p>The neon street zone is the most vibrant — perfect for showcasing the couple's photos. Images appear as if displayed in illuminated light boxes or neon-framed displays on the building facades.</p>
+            <p>Gallery layout: 2-column grid or horizontal swipe carousel. Each photo has a subtle neon-glow border that matches the surrounding signage colors. Photos could be slightly tinted warm by the ambient neon.</p>
+            <p style="font-family:var(--mono);font-size:11px;color:var(--rose);">📸 Photo grid or carousel<br/>3–8 couple photos<br/>Neon-glow frames</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:var(--amber);">Scene Assets Behind</h4>
+            <p>Street buildings rising above. Back neon layer (far signs, dimmer). Front neon layer starts appearing — 茶餐廳, 金行, 押 signs. Neon glow halos pulsing. Tram begins entering from left. Street lights now ~40% dim. Rain intensifying.</p>
+            <div class="asset-chips">
+              <span class="chip chip-photo">street_buildings_deep.png</span>
+              <span class="chip chip-photo">neon_layer_back.png</span>
+              <span class="chip chip-photo">neon_layer_front.png</span>
+              <span class="chip chip-photo">neon_glow_map.png</span>
+              <span class="chip chip-dynamic">tram_full_set 🚋 entering</span>
+              <span class="chip chip-dynamic">streetlight_set_B ×3 🔦 40%</span>
+              <span class="chip chip-canvas">rain_heavy</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-scroll">tram enters from left</span>
+              <span class="beh-tag beh-auto">neon pulse + broken flicker</span>
+              <span class="beh-tag beh-scroll">street lights ~40%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 7: ACCOUNTS → ZONE 04 BOTTOM ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-account">SCR 7</div>
+          <h3>Gift Accounts — 축의금 안내</h3>
+          <div class="fc-zone-tag" style="background:rgba(255,176,32,0.08);color:var(--amber);">ZONE 04 · STREET BOTTOM</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:var(--amber);">Wedding Content</h4>
+            <p>Account information for monetary gifts. Styled as glass info cards with bank name, account number, and copy buttons. The neon-lit street backdrop adds warmth to this transactional section.</p>
+            <p>Two collapsible sections: "신랑측 계좌" (Groom's side) and "신부측 계좌" (Bride's side). Each expands to show account details with copy functionality.</p>
+            <p style="font-family:var(--mono);font-size:11px;color:var(--rose);">🏦 Groom side accounts<br/>🏦 Bride side accounts<br/>📋 Copy button per account</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:var(--amber);">Scene Assets Behind</h4>
+            <p>Peak neon intensity. Tram crossing mid-frame. Taxi entering from right (counter-direction). Wet asphalt reflection below — neon colors doubled. Foreground lamp post rushing past. Street lights now ~25%.</p>
+            <div class="asset-chips">
+              <span class="chip chip-photo">neon_layer_front.png</span>
+              <span class="chip chip-dynamic">tram mid-crossing 🚋</span>
+              <span class="chip chip-dynamic">taxi entering 🚕</span>
+              <span class="chip chip-photo">tram_tracks.png</span>
+              <span class="chip chip-photo">wet_asphalt_reflection.png</span>
+              <span class="chip chip-photo">street_pole_fg.png</span>
+              <span class="chip chip-dynamic">streetlight_set_B 🔦 25%</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-scroll">tram mid-frame</span>
+              <span class="beh-tag beh-scroll">taxi counter-traverse</span>
+              <span class="beh-tag beh-scroll">street lights fading</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ SCREEN 8: ENDING → ZONE 05 ═══ -->
+      <div class="flow-card">
+        <div class="fc-header">
+          <div class="fc-screen scr-end">SCR 8</div>
+          <h3>Closing + RSVP Trigger — 마무리</h3>
+          <div class="fc-zone-tag" style="background:rgba(255,64,64,0.08);color:var(--red);">ZONE 05 · GROUND</div>
+        </div>
+        <div class="fc-body">
+          <div class="fc-col">
+            <h4 style="color:var(--red);">Wedding Content</h4>
+            <p>The final zone. Steam from food stalls, wet pavement, and a puddle reflecting the entire neon city above. The closing message appears here.</p>
+            <p><strong>For returning guests (8-A):</strong> "💕 참석해 주시기로 해서 감사합니다. 결혼식에서 뵙겠습니다." + link to modify.</p>
+            <p><strong>For new guests (8-B):</strong> Subtle prompt to RSVP. The floating "참석 의사 전달" button pulses gently — it's been visible since Zone 03 but becomes prominent here.</p>
+            <p>The puddle reflection is the final visual — the entire journey compressed into one shimmering image. It's the emotional close.</p>
+          </div>
+          <div class="fc-col">
+            <h4 style="color:var(--red);">Scene Assets Behind</h4>
+            <p>Dai pai dong stall structure. Food stall lights (fluorescent tube flicker). Rising steam. Wet pavement tiles. Manhole cover. Puddle with neon reflection. Ripple animation. Foreground debris rushing past. Street lights at ~10% — nearly off.</p>
+            <div class="asset-chips">
+              <span class="chip chip-photo">stall_structure.png</span>
+              <span class="chip chip-photo">stall_lights_signs.png</span>
+              <span class="chip chip-canvas">steam_rising</span>
+              <span class="chip chip-photo">pavement_tiles.png</span>
+              <span class="chip chip-photo">manhole_cover.png</span>
+              <span class="chip chip-photo">puddle_base.png</span>
+              <span class="chip chip-photo">puddle_reflection.png</span>
+              <span class="chip chip-canvas">puddle_ripples</span>
+              <span class="chip chip-photo">ground_debris_fg.png</span>
+              <span class="chip chip-dynamic">streetlight_set_C 🔦 10%</span>
+            </div>
+            <div style="margin-top:10px;">
+              <span class="beh-tag beh-auto">steam loop</span>
+              <span class="beh-tag beh-auto">puddle ripples</span>
+              <span class="beh-tag beh-auto">fluorescent flicker</span>
+              <span class="beh-tag beh-scroll">street lights nearly off</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ RSVP OVERLAY SYSTEM ═══ -->
+      <div class="flow-card" style="border-color:rgba(45,218,110,0.2);">
+        <div class="fc-header" style="border-color:rgba(45,218,110,0.12);">
+          <div class="fc-screen scr-rsvp">SCR 9–14</div>
+          <h3>RSVP Flow — 참석 의사 전달</h3>
+          <div class="fc-zone-tag" style="background:rgba(45,218,110,0.08);color:var(--green);">MODAL OVERLAY</div>
+        </div>
+        <div class="fc-body" style="grid-template-columns:1fr;">
+          <div class="fc-col" style="max-width:100%;">
+            <h4 style="color:var(--green);">Overlay System — NOT a separate page</h4>
+            <p>When the user taps the floating "참석 의사 전달" button, the parallax scene FREEZES (scroll locked) and a frosted-glass full-screen overlay slides up. The HK scene is visible but blurred behind the RSVP cards. This keeps the immersive feel while providing a focused, clean interface for the multi-step form.</p>
+            <p>The overlay uses the same glass-card style as the invitation content, but full-screen with a dark backdrop (<code style="font-family:var(--mono);font-size:11px;color:var(--cyan);">backdrop-filter: blur(24px); background: rgba(6,8,13,0.85)</code>). Each RSVP step is a card that transitions horizontally (swipe) or fades in/out.</p>
+            <p style="margin-top:12px;"><strong>On completion (Screen 14):</strong> The overlay dismisses, scroll unlocks, and the scene gently resumes. If the guest confirmed attendance, the puddle reflection could briefly shimmer with a golden pulse — a subtle celebration moment.</p>
+
+            <div class="rsvp-section">
+              <h3>RSVP Step Flow</h3>
+              <p>4-step progress indicator (●○○○). Each step is a full-screen card within the overlay.</p>
+              <div class="rsvp-flow">
+                <div class="rsvp-step">
+                  <div class="step-num">STEP 01</div>
+                  <div class="step-title">Screen 9</div>
+                  <div class="step-desc">Existing respondent check — show previous RSVP data. Option to modify or confirm.</div>
+                </div>
+                <div class="rsvp-arrow">→</div>
+                <div class="rsvp-step">
+                  <div class="step-num">STEP 02</div>
+                  <div class="step-title">Screen 10</div>
+                  <div class="step-desc">Attendance: "참석하실 수 있으신가요?" Yes 🎉 / No 😢</div>
+                </div>
+                <div class="rsvp-arrow">→</div>
+                <div class="rsvp-step">
+                  <div class="step-num">STEP 03</div>
+                  <div class="step-title">Screen 11</div>
+                  <div class="step-desc">Headcount: "몇 분이서 오시나요?" 1/2/3/4+</div>
+                </div>
+                <div class="rsvp-arrow">→</div>
+                <div class="rsvp-step">
+                  <div class="step-num">STEP 04</div>
+                  <div class="step-title">Screen 12</div>
+                  <div class="step-desc">Bus Seoul→Daegu: "서울→대구 버스 이용?" Use / Self</div>
+                </div>
+                <div class="rsvp-arrow">→</div>
+                <div class="rsvp-step">
+                  <div class="step-num">STEP 05</div>
+                  <div class="step-title">Screen 13</div>
+                  <div class="step-desc">Bus Daegu→Seoul: "돌아오는 버스?" Same day / Next morning / Self</div>
+                </div>
+                <div class="rsvp-arrow">→</div>
+                <div class="rsvp-step" style="border-color:rgba(45,218,110,0.25);">
+                  <div class="step-num" style="color:var(--green);">COMPLETE</div>
+                  <div class="step-title">Screen 14</div>
+                  <div class="step-desc">✓ 감사합니다! View invitation / Share / Edit response</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /flow-cards -->
+  </div><!-- /flow-container -->
+</div>
+
+<!-- ════════ ZONE EDGE CONNECTIONS ════════ -->
+<div class="section">
+  <div class="section-tag">Section 02</div>
+  <h2>Zone Edge Connections — Seamless Stitching</h2>
+  <p>How each zone's bottom edge blends into the next zone's top edge. There must be NO visible seam.</p>
+
+  <div style="overflow-x:auto;">
+    <table class="conn-table">
+      <thead>
+        <tr>
+          <th>Transition</th>
+          <th>Bottom of Zone (Exit)</th>
+          <th>Blending Method</th>
+          <th>Top of Next Zone (Entry)</th>
+          <th>Shared Assets</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="conn-zone" style="background:rgba(74,111,165,0.12);color:#7baaf7;">Z01</span> → <span class="conn-zone" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02</span></td>
+          <td class="conn-edge">Warm amber glow at horizon line, cloud wisps still visible</td>
+          <td>Tower tips emerge FROM the glow. <code style="font-family:var(--mono);font-size:10px;">Gradient overlap: 200px</code>. City glow gradient is the same element that illuminates tower tops.</td>
+          <td class="conn-edge">Tower silhouettes peek out of the warm haze. Aviation lights are first visible elements.</td>
+          <td class="mono">city_glow_gradient, haze_band.png (spans both zones)</td>
+        </tr>
+        <tr>
+          <td><span class="conn-zone" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02</span> → <span class="conn-zone" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03</span></td>
+          <td class="conn-edge">Close building edges fill 60% of frame, dense window grids</td>
+          <td>Buildings continue downward — same structures, but we're now seeing their mid-sections. <code style="font-family:var(--mono);font-size:10px;">building_close_left/right extend into Z03</code>. Escalator canopy starts between buildings.</td>
+          <td class="conn-edge">Escalator appears between building walls. SoHo shopfronts at ground level of same buildings.</td>
+          <td class="mono">building_close_left.png, building_close_right.png (span Z02–Z03), window_grid_close</td>
+        </tr>
+        <tr>
+          <td><span class="conn-zone" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03</span> → <span class="conn-zone" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04</span></td>
+          <td class="conn-edge">Escalator ends, shopfronts become denser, street visible below</td>
+          <td>SoHo shops transition into main street-level facades. Color temperature shifts warm — neon signs start appearing on the same buildings. <code style="font-family:var(--mono);font-size:10px;">Gradient shift: cool blue → warm amber over 300px</code></td>
+          <td class="conn-edge">First neon signs visible. Street level reached. Tram tracks appear.</td>
+          <td class="mono">soho_shopfronts.png bottom overlaps with neon_layer_back.png top. streetlight_set_A fades into streetlight_set_B</td>
+        </tr>
+        <tr>
+          <td><span class="conn-zone" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04</span> → <span class="conn-zone" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05</span></td>
+          <td class="conn-edge">Neon signs above, wet asphalt reflection below, vehicles passing</td>
+          <td>Camera angle shifts downward — we stop seeing signs and start seeing ground. Wet asphalt reflection bridges the two zones. <code style="font-family:var(--mono);font-size:10px;">wet_asphalt_reflection.png bottom connects to pavement_tiles.png top</code></td>
+          <td class="conn-edge">Pavement tiles. Stall structure. Steam rising from ground level.</td>
+          <td class="mono">wet_asphalt_reflection.png bottom half, pavement_tiles.png top half — same wet surface, continuous texture</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ FLOATING BUTTON ════════ -->
+<div class="section">
+  <div class="section-tag">Section 03</div>
+  <h2>Floating RSVP Button Behavior</h2>
+  <p>The "참석 의사 전달" button is a persistent floating element that follows the user through the scroll.</p>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+      <h4 style="font-family:var(--mono);font-size:11px;color:var(--green);margin-bottom:8px;">ZONE 01–02 (0–2400px)</h4>
+      <p style="font-size:12px;color:var(--dim);line-height:1.7;">Button is <strong>hidden</strong>. The guest hasn't seen enough of the invitation yet. No RSVP prompt during the cover and greeting.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+      <h4 style="font-family:var(--mono);font-size:11px;color:var(--green);margin-bottom:8px;">ZONE 03 (2400–4500px)</h4>
+      <p style="font-size:12px;color:var(--dim);line-height:1.7;">Button <strong>fades in</strong> at bottom of screen. Subtle, semi-transparent. Glass style matching the content cards. Doesn't compete with the location/map content.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+      <h4 style="font-family:var(--mono);font-size:11px;color:var(--green);margin-bottom:8px;">ZONE 04 (4500–6800px)</h4>
+      <p style="font-size:12px;color:var(--dim);line-height:1.7;">Button is <strong>fully visible</strong>. Slightly more opaque. Available while browsing gallery and accounts.</p>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;">
+      <h4 style="font-family:var(--mono);font-size:11px;color:var(--green);margin-bottom:8px;">ZONE 05 (6800–8000px)</h4>
+      <p style="font-size:12px;color:var(--dim);line-height:1.7;">Button <strong>pulses with glow</strong> — gentle neon-like animation. This is the primary CTA zone. If guest reaches the puddle without tapping, the ending message encourages action.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SUMMARY FLOW ════════ -->
+<div class="section">
+  <div class="section-tag">Section 04</div>
+  <h2>Complete Flow Summary</h2>
+
+  <div style="overflow-x:auto;">
+    <table class="conn-table">
+      <thead>
+        <tr>
+          <th>Scroll Position</th>
+          <th>Zone</th>
+          <th>Screen</th>
+          <th>Wedding Content</th>
+          <th>Scene Behind</th>
+          <th>Key Behavior</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="mono">0–800px</td>
+          <td><span class="conn-zone" style="background:rgba(74,111,165,0.12);color:#7baaf7;">Z01</span></td>
+          <td class="mono">Scr 1</td>
+          <td>Names + Date + ↓ scroll hint</td>
+          <td>Night sky, stars, clouds, city glow</td>
+          <td>Cloud drift, sparse rain</td>
+        </tr>
+        <tr>
+          <td class="mono">800–1600px</td>
+          <td><span class="conn-zone" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-A</span></td>
+          <td class="mono">Scr 2–3</td>
+          <td>Greeting message + parents</td>
+          <td>Tower peaks, far skyline, haze</td>
+          <td>Windows 70% lit, aviation blink</td>
+        </tr>
+        <tr>
+          <td class="mono">1600–2400px</td>
+          <td><span class="conn-zone" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-B</span></td>
+          <td class="mono">Scr 4</td>
+          <td>Date / Time / Venue info card</td>
+          <td>Close buildings framing, dense windows</td>
+          <td>Windows 60% lit, building corridor</td>
+        </tr>
+        <tr>
+          <td class="mono">2400–4500px</td>
+          <td><span class="conn-zone" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03</span></td>
+          <td class="mono">Scr 5</td>
+          <td>Location + map + transport info</td>
+          <td>Escalator, SoHo, apartments</td>
+          <td>Street lights 100%, RSVP btn appears</td>
+        </tr>
+        <tr>
+          <td class="mono">4500–5600px</td>
+          <td><span class="conn-zone" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-A</span></td>
+          <td class="mono">Scr 6</td>
+          <td>Photo gallery</td>
+          <td>Neon signs, tram entering, rain</td>
+          <td>Tram → right, neon pulse, lights 40%</td>
+        </tr>
+        <tr>
+          <td class="mono">5600–6800px</td>
+          <td><span class="conn-zone" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-B</span></td>
+          <td class="mono">Scr 7</td>
+          <td>Gift account info + copy</td>
+          <td>Peak neon, tram + taxi crossing, reflections</td>
+          <td>Taxi ← left, tram mid, lights 25%</td>
+        </tr>
+        <tr>
+          <td class="mono">6800–8000px</td>
+          <td><span class="conn-zone" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05</span></td>
+          <td class="mono">Scr 8</td>
+          <td>Closing message + RSVP CTA</td>
+          <td>Stall, steam, pavement, puddle</td>
+          <td>RSVP btn pulsing, lights 10%, ripples</td>
+        </tr>
+        <tr style="background:rgba(45,218,110,0.03);">
+          <td class="mono">— overlay —</td>
+          <td><span class="conn-zone" style="background:rgba(45,218,110,0.08);color:var(--green);">OVL</span></td>
+          <td class="mono">Scr 9–14</td>
+          <td>RSVP multi-step form</td>
+          <td>Scene frozen + blurred behind</td>
+          <td>Scroll locked, step transitions</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ════════ PHONE PREVIEWS ════════ -->
+<div class="section">
+  <div class="section-tag">Section 05</div>
+  <h2>Mobile Preview Mockups</h2>
+  <p>How each key screen looks on a phone — content card floating over the scene.</p>
+
+  <div class="preview-row">
+
+    <!-- Phone 1: Cover -->
+    <div class="preview-phone">
+      <div class="p-label">Scr 1 · Cover</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mini-sky" style="background:linear-gradient(180deg,#050810 0%,#0a1628 60%,#0f1f3a 100%);"></div>
+          <!-- stars -->
+          <div style="position:absolute;top:15%;left:20%;width:2px;height:2px;background:rgba(255,255,255,0.3);border-radius:50%;z-index:2;"></div>
+          <div style="position:absolute;top:25%;left:65%;width:1px;height:1px;background:rgba(255,255,255,0.2);border-radius:50%;z-index:2;"></div>
+          <div style="position:absolute;top:10%;left:45%;width:1px;height:1px;background:rgba(255,255,255,0.4);border-radius:50%;z-index:2;"></div>
+          <!-- city glow -->
+          <div style="position:absolute;bottom:0;left:0;right:0;height:30%;background:radial-gradient(ellipse at 50% 100%,rgba(255,176,32,0.06),transparent);z-index:2;"></div>
+          <!-- content -->
+          <div class="mini-content">
+            <div style="font-size:7px;color:rgba(255,255,255,0.3);letter-spacing:3px;text-transform:uppercase;margin-bottom:20px;">wedding invitation</div>
+            <div style="font-size:16px;color:var(--bright);font-weight:300;letter-spacing:2px;">지훈</div>
+            <div style="font-size:12px;color:var(--rose);margin:8px 0;">♥</div>
+            <div style="font-size:16px;color:var(--bright);font-weight:300;letter-spacing:2px;">수진</div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.3);margin-top:16px;letter-spacing:1px;">2025. 4. 4 토요일</div>
+            <div style="position:absolute;bottom:24px;font-size:8px;color:rgba(255,255,255,0.2);">↓ scroll</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 2: Greeting + Skyline -->
+    <div class="preview-phone">
+      <div class="p-label">Scr 2 · Greeting</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mini-sky" style="background:linear-gradient(180deg,#0a1628 0%,#0f1f3a 40%,#15202e 100%);"></div>
+          <!-- buildings -->
+          <div class="mini-buildings">
+            <div class="mini-bld" style="left:0;width:18%;height:70%;"></div>
+            <div class="mini-bld" style="left:20%;width:12%;height:90%;border-top-color:var(--pink);"></div>
+            <div class="mini-bld" style="left:70%;width:14%;height:75%;"></div>
+            <div class="mini-bld" style="left:86%;width:14%;height:85%;"></div>
+          </div>
+          <!-- windows -->
+          <div class="mini-window on" style="left:4%;bottom:50%;"></div>
+          <div class="mini-window on" style="left:8%;bottom:45%;"></div>
+          <div class="mini-window off" style="left:4%;bottom:40%;"></div>
+          <div class="mini-window on" style="left:23%;bottom:52%;"></div>
+          <div class="mini-window on" style="left:73%;bottom:48%;"></div>
+          <div class="mini-window off" style="left:89%;bottom:55%;"></div>
+          <div class="mini-window on" style="left:89%;bottom:48%;"></div>
+          <!-- content card -->
+          <div class="mini-content" style="justify-content:center;">
+            <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:16px 12px;width:85%;text-align:center;">
+              <div style="font-size:8px;color:rgba(255,255,255,0.5);line-height:1.7;margin-bottom:8px;">서로의 마음을 확인하고<br/>한 길을 함께 걸으려 합니다</div>
+              <div style="font-size:7px;color:rgba(255,255,255,0.3);line-height:1.8;">◯◯◯ · ◯◯◯의 아들 지훈<br/>◯◯◯ · ◯◯◯의 딸 수진</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 3: Location -->
+    <div class="preview-phone">
+      <div class="p-label">Scr 5 · Location</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mini-sky" style="background:linear-gradient(180deg,#15202e 0%,#1a2535 50%,#1e2a3a 100%);"></div>
+          <!-- escalator line -->
+          <div style="position:absolute;top:10%;left:15%;width:2px;height:80%;background:linear-gradient(180deg,rgba(0,212,255,0.05),rgba(0,212,255,0.2),rgba(0,212,255,0.05));border-radius:1px;z-index:3;box-shadow:0 0 4px rgba(0,212,255,0.15);"></div>
+          <!-- shopfront lights -->
+          <div style="position:absolute;top:30%;left:5%;width:4px;height:4px;background:var(--pink);border-radius:50%;box-shadow:0 0 4px var(--pink);z-index:3;"></div>
+          <div style="position:absolute;top:55%;right:10%;width:4px;height:4px;background:var(--amber);border-radius:50%;box-shadow:0 0 4px var(--amber);z-index:3;"></div>
+          <!-- content -->
+          <div class="mini-content" style="justify-content:center;">
+            <div style="background:rgba(255,255,255,0.06);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:14px 10px;width:88%;">
+              <div style="font-size:8px;color:var(--bright);margin-bottom:6px;font-weight:500;">오시는 길</div>
+              <div style="font-size:7px;color:rgba(255,255,255,0.4);margin-bottom:8px;">◯◯웨딩홀<br/>대구 ◯◯구 ◯◯로 123</div>
+              <div style="background:rgba(255,255,255,0.04);border-radius:6px;height:60px;display:flex;align-items:center;justify-content:center;font-size:7px;color:rgba(255,255,255,0.2);margin-bottom:6px;">🗺 Map</div>
+              <div style="font-size:6px;color:rgba(255,255,255,0.3);line-height:1.6;">🚇 ◯◯역 3번 출구 5분<br/>🚗 주차 가능</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 4: Gallery + Neon -->
+    <div class="preview-phone">
+      <div class="p-label">Scr 6 · Gallery</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mini-sky" style="background:linear-gradient(180deg,#1e2a3a 0%,#1a1a1a 50%,#151515 100%);"></div>
+          <!-- neon signs -->
+          <div class="mini-neon" style="top:12%;left:5%;color:var(--pink);border:1px solid var(--pink);text-shadow:0 0 3px var(--pink);">茶</div>
+          <div class="mini-neon" style="top:8%;right:8%;color:var(--cyan);border:1px solid var(--cyan);text-shadow:0 0 3px var(--cyan);">BAR</div>
+          <div class="mini-neon" style="top:22%;left:10%;color:var(--amber);border:1px solid var(--amber);text-shadow:0 0 3px var(--amber);">金</div>
+          <div class="mini-neon" style="bottom:15%;right:5%;color:var(--green);border:1px solid var(--green);text-shadow:0 0 3px var(--green);">押</div>
+          <!-- tram -->
+          <div class="mini-tram" style="bottom:12%;left:15%;"></div>
+          <!-- photo grid -->
+          <div class="mini-content" style="justify-content:center;">
+            <div style="width:88%;display:grid;grid-template-columns:1fr 1fr;gap:4px;">
+              <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,176,32,0.15);border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,0.2);">📸</div>
+              <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,61,138,0.15);border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,0.2);">📸</div>
+              <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(0,212,255,0.15);border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,0.2);">📸</div>
+              <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(45,218,110,0.15);border-radius:4px;height:50px;display:flex;align-items:center;justify-content:center;font-size:8px;color:rgba(255,255,255,0.2);">📸</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Phone 5: Ending + Puddle -->
+    <div class="preview-phone">
+      <div class="p-label">Scr 8 · Closing</div>
+      <div class="phone-frame">
+        <div class="phone-screen">
+          <div class="mini-sky" style="background:linear-gradient(180deg,#151515 0%,#0f0f0f 50%,#080808 100%);"></div>
+          <!-- steam -->
+          <div style="position:absolute;top:20%;left:30%;width:12px;height:20px;background:linear-gradient(180deg,rgba(255,255,255,0.05),transparent);border-radius:50% 50% 0 0;filter:blur(2px);z-index:3;"></div>
+          <!-- puddle -->
+          <div style="position:absolute;bottom:10%;left:15%;right:15%;height:24%;border-radius:50%;background:radial-gradient(ellipse,rgba(0,212,255,0.04),rgba(255,61,138,0.03),transparent);border:1px solid rgba(255,255,255,0.02);z-index:3;"></div>
+          <!-- content -->
+          <div class="mini-content" style="justify-content:center;">
+            <div style="font-size:10px;margin-bottom:4px;">💕</div>
+            <div style="font-size:8px;color:rgba(255,255,255,0.5);margin-bottom:4px;">결혼식에서 뵙겠습니다</div>
+            <div style="background:var(--green);color:#000;font-size:7px;font-weight:600;padding:6px 16px;border-radius:20px;margin-top:12px;box-shadow:0 0 12px rgba(45,218,110,0.3);">참석 의사 전달</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <p>HK Parallax × Wedding Invitation — Scene-Flow Mapping v3.0</p>
+</div>
+
+</body>
+</html>
