@@ -1,10 +1,10 @@
 {
   "cover": {
-    "invitation": "Wedding Invitation",
-    "groom": "Jihun",
-    "bride": "Sujin",
+    "label": "wedding invitation",
+    "groomName": "Jihun",
+    "brideName": "Sujin",
     "date": "Saturday, April 4, 2025",
-    "scrollHint": "Scroll down"
+    "scrollHint": "scroll"
   },
   "greeting": {
     "message": "We confirm our hearts for each other\nand will walk together on one path",

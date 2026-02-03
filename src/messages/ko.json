@@ -1,10 +1,10 @@
 {
   "cover": {
-    "invitation": "결혼식 초대장",
-    "groom": "지훈",
-    "bride": "수진",
+    "label": "wedding invitation",
+    "groomName": "지훈",
+    "brideName": "수진",
     "date": "2025. 4. 4 토요일",
-    "scrollHint": "아래로 스크롤"
+    "scrollHint": "scroll"
   },
   "greeting": {
     "message": "서로의 마음을 확인하고\n한 길을 함께 걸으려 합니다",

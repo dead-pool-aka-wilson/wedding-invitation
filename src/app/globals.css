@@ -32,3 +32,55 @@ body {
 .warm-tint {
   filter: sepia(0.1) saturate(1.1) brightness(0.95);
 }
+
+.sky-gradient {
+  background: linear-gradient(
+    180deg,
+    #050810 0%,
+    #0a1628 40%,
+    #0f1f3a 80%,
+    #15202e 100%
+  );
+}
+
+.city-glow-gradient {
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(255, 176, 32, 0.08) 0%,
+    rgba(255, 140, 0, 0.04) 30%,
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.glow-text {
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.15),
+    0 0 40px rgba(255, 255, 255, 0.08);
+}
+
+.cloud-drift-left {
+  animation: driftLeft 60s linear infinite;
+}
+
+.cloud-drift-right {
+  animation: driftRight 80s linear infinite;
+}
+
+@keyframes driftLeft {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-10%);
+  }
+}
+
+@keyframes driftRight {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(10%);
+  }
+}
