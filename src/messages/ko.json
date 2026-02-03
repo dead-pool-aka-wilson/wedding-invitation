@@ -1,5 +1,63 @@
 {
-  "welcome": "환영합니다",
-  "invitation": "결혼식 초대장",
-  "rsvp": "참석 여부 확인"
+  "cover": {
+    "invitation": "결혼식 초대장",
+    "groom": "지훈",
+    "bride": "수진",
+    "date": "2025. 4. 4 토요일",
+    "scrollHint": "아래로 스크롤"
+  },
+  "greeting": {
+    "message": "서로의 마음을 확인하고\n한 길을 함께 걸으려 합니다",
+    "groomParents": "◯◯◯ · ◯◯◯의 아들 지훈",
+    "brideParents": "◯◯◯ · ◯◯◯의 딸 수진"
+  },
+  "dateTime": {
+    "fullDate": "2025년 4월 4일 토요일",
+    "time": "오후 2시",
+    "venue": "◯◯◯ 웨딩홀"
+  },
+  "location": {
+    "title": "오시는 길",
+    "venue": "◯◯웨딩홀",
+    "address": "대구 ◯◯구 ◯◯로 123",
+    "subway": "◯◯역 3번 출구 5분",
+    "parking": "주차 가능"
+  },
+  "gallery": {
+    "title": "갤러리"
+  },
+  "accounts": {
+    "title": "축의금 안내",
+    "groomSide": "신랑측 계좌",
+    "brideSide": "신부측 계좌",
+    "copy": "복사",
+    "copied": "복사되었습니다"
+  },
+  "closing": {
+    "message": "결혼식에서 뵙겠습니다",
+    "thanks": "참석해 주시기로 해서 감사합니다"
+  },
+  "rsvp": {
+    "button": "참석 의사 전달",
+    "title": "참석 의사 전달",
+    "attendance": "참석하실 수 있으신가요?",
+    "yes": "네, 참석합니다",
+    "no": "아니요, 참석이 어렵습니다",
+    "headcount": "몇 분이서 오시나요?",
+    "busTo": "서울→대구 버스 이용하시겠어요?",
+    "busFrom": "돌아오는 버스는요?",
+    "sameDay": "당일",
+    "nextMorning": "다음날 아침",
+    "self": "직접 이동",
+    "submit": "제출하기",
+    "success": "감사합니다!",
+    "name": "성함",
+    "phone": "연락처",
+    "side": "신랑측/신부측",
+    "groomSide": "신랑측",
+    "brideSide": "신부측"
+  },
+  "common": {
+    "language": "English"
+  }
 }

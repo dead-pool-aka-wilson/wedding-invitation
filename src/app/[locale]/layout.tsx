@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 import "../globals.css";
+import LanguageToggle from "@/components/LanguageToggle";
 
 export const metadata: Metadata = {
   title: "Wedding Invitation",
@@ -20,7 +21,12 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body>{children}</body>
+      <body>
+        <div className="fixed top-4 right-4 z-50">
+          <LanguageToggle />
+        </div>
+        {children}
+      </body>
     </html>
   );
 }

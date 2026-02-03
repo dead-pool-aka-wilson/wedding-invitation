@@ -1,5 +1,63 @@
 {
-  "welcome": "Welcome",
-  "invitation": "Wedding Invitation",
-  "rsvp": "RSVP"
+  "cover": {
+    "invitation": "Wedding Invitation",
+    "groom": "Jihun",
+    "bride": "Sujin",
+    "date": "Saturday, April 4, 2025",
+    "scrollHint": "Scroll down"
+  },
+  "greeting": {
+    "message": "We confirm our hearts for each other\nand will walk together on one path",
+    "groomParents": "Son of ◯◯◯ and ◯◯◯, Jihun",
+    "brideParents": "Daughter of ◯◯◯ and ◯◯◯, Sujin"
+  },
+  "dateTime": {
+    "fullDate": "Saturday, April 4, 2025",
+    "time": "2:00 PM",
+    "venue": "◯◯◯ Wedding Hall"
+  },
+  "location": {
+    "title": "Directions",
+    "venue": "◯◯ Wedding Hall",
+    "address": "123 ◯◯-ro, ◯◯-gu, Daegu",
+    "subway": "5 minutes from Exit 3, ◯◯ Station",
+    "parking": "Parking available"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "accounts": {
+    "title": "Gift Information",
+    "groomSide": "Groom's Side Account",
+    "brideSide": "Bride's Side Account",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "closing": {
+    "message": "We look forward to seeing you at our wedding",
+    "thanks": "Thank you for attending our special day"
+  },
+  "rsvp": {
+    "button": "RSVP",
+    "title": "RSVP",
+    "attendance": "Will you be able to attend?",
+    "yes": "Yes, I will attend",
+    "no": "No, I cannot attend",
+    "headcount": "How many guests will be attending?",
+    "busTo": "Will you use the Seoul→Daegu bus?",
+    "busFrom": "What about the return bus?",
+    "sameDay": "Same day",
+    "nextMorning": "Next morning",
+    "self": "Self-arranged",
+    "submit": "Submit",
+    "success": "Thank you!",
+    "name": "Name",
+    "phone": "Phone",
+    "side": "Groom's/Bride's Side",
+    "groomSide": "Groom's Side",
+    "brideSide": "Bride's Side"
+  },
+  "common": {
+    "language": "한국어"
+  }
 }
