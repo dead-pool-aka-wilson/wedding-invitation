@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ParallaxLayer } from '@/components/parallax';
 import { GlassCard } from '@/components/ui';
@@ -15,62 +16,73 @@ export function Zone02Skyline() {
       className="absolute left-0 w-full overflow-hidden"
       style={{ top: '870px', height: '1730px' }}
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #0a1628 0%, #0f1f3a 40%, #15202e 100%)',
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/zones/z02-skyline/z02-01-kowloon-skyline.png"
+          alt="Kowloon Skyline"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
 
-      <ParallaxLayer speed={0.3} zIndex={1}>
-        <div className="absolute bottom-0 left-0 right-0 h-[65%] opacity-80">
-          <div
-            className="absolute bottom-0 left-0 w-[18%] h-[70%]"
-            style={{ background: 'linear-gradient(180deg, #0d1520, #152030)' }}
-          />
-          <div
-            className="absolute bottom-0 left-[20%] w-[12%] h-[90%]"
-            style={{ background: 'linear-gradient(180deg, #0d1520, #152030)' }}
-          />
-          <div
-            className="absolute bottom-0 right-[14%] w-[14%] h-[75%]"
-            style={{ background: 'linear-gradient(180deg, #0d1520, #152030)' }}
-          />
-          <div
-            className="absolute bottom-0 right-0 w-[14%] h-[85%]"
-            style={{ background: 'linear-gradient(180deg, #0d1520, #152030)' }}
-          />
-        </div>
-      </ParallaxLayer>
-
-      <ParallaxLayer speed={0.5} zIndex={2}>
-        <div className="absolute top-[20%] left-0 right-0 h-[220px] opacity-40">
-          <div
-            className="absolute inset-0"
-            style={{
-              background: 'linear-gradient(180deg, transparent, rgba(180,160,140,0.15), transparent)',
-            }}
-          />
-        </div>
-      </ParallaxLayer>
-
-      <ParallaxLayer speed={0.5} zIndex={3}>
+      <ParallaxLayer speed={0.2} zIndex={1}>
         <div className="absolute inset-0">
-          {Array.from({ length: 40 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute w-[3px] h-[2px] rounded-sm"
-              style={{
-                left: `${5 + Math.random() * 90}%`,
-                top: `${30 + Math.random() * 60}%`,
-                background: Math.random() > 0.8 ? '#aaccff' : '#ffe066',
-                boxShadow: `0 0 ${2 + Math.random() * 3}px currentColor`,
-                opacity: 0.4 + Math.random() * 0.4,
-              }}
+          <Image
+            src="/images/zones/z02-skyline/z02-02-hk-towers.png"
+            alt="HK Towers"
+            fill
+            className="object-cover object-bottom"
+          />
+          <div className="absolute inset-0 mix-blend-screen">
+            <Image
+              src="/images/zones/z02-skyline/z02-06-window-lights.png"
+              alt="Window Lights"
+              fill
+              className="object-cover object-bottom"
             />
-          ))}
+          </div>
         </div>
       </ParallaxLayer>
+
+      <ParallaxLayer speed={0.4} zIndex={2}>
+        <div className="absolute inset-0 opacity-60">
+          <Image
+            src="/images/zones/z02-skyline/z02-05-haze.png"
+            alt="Haze"
+            fill
+            className="object-cover"
+          />
+        </div>
+      </ParallaxLayer>
+
+      <ParallaxLayer speed={0.6} zIndex={3}>
+        <div className="absolute bottom-0 left-0 w-[40%] h-[90%]">
+          <Image
+            src="/images/zones/z02-skyline/z02-03-left-building.png"
+            alt="Left Building"
+            fill
+            className="object-contain object-bottom-left"
+          />
+        </div>
+        <div className="absolute bottom-0 right-0 w-[40%] h-[90%]">
+          <Image
+            src="/images/zones/z02-skyline/z02-04-right-building.png"
+            alt="Right Building"
+            fill
+            className="object-contain object-bottom-right"
+          />
+        </div>
+      </ParallaxLayer>
+
+      <div className="absolute bottom-0 left-0 right-0 h-[400px] z-20 pointer-events-none">
+        <Image
+          src="/images/zones/z02-skyline/z02-07-transition.png"
+          alt="Transition"
+          fill
+          className="object-cover object-bottom"
+        />
+      </div>
 
       <div className="absolute inset-0 z-10 flex flex-col items-center px-6">
         <div className="mt-[200px] w-full max-w-[320px]">

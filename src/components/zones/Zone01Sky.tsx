@@ -1,9 +1,9 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ParallaxLayer } from '@/components/parallax';
-import { GlassCard } from '@/components/ui';
 
 export function Zone01Sky() {
   const t = useTranslations('cover');
@@ -15,12 +15,15 @@ export function Zone01Sky() {
       className="absolute top-0 left-0 w-full overflow-hidden"
       style={{ height: '870px' }}
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #050810 0%, #0a1628 60%, #0f1f3a 100%)',
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/zones/z01-sky/z01-01-night-sky.png"
+          alt="Night Sky"
+          fill
+          className="object-cover"
+          priority
+        />
+      </div>
 
       <ParallaxLayer speed={0.05} zIndex={1}>
         <div className="absolute inset-0 opacity-30">
@@ -32,18 +35,26 @@ export function Zone01Sky() {
         </div>
       </ParallaxLayer>
 
-      <ParallaxLayer speed={0.15} zIndex={2} className="opacity-50">
-        <div
-          className="absolute top-[30%] left-[10%] w-[200px] h-[80px] rounded-full blur-2xl"
-          style={{ background: 'rgba(255,176,32,0.03)' }}
-        />
+      <ParallaxLayer speed={0.15} zIndex={2} className="opacity-80">
+        <div className="absolute top-[25%] left-[5%] w-[400px] h-[200px]">
+          <Image
+            src="/images/zones/z01-sky/z01-02-cloud-a.png"
+            alt="Cloud A"
+            fill
+            className="object-contain opacity-60"
+          />
+        </div>
       </ParallaxLayer>
 
-      <ParallaxLayer speed={0.2} zIndex={2} className="opacity-60">
-        <div
-          className="absolute top-[40%] right-[15%] w-[180px] h-[60px] rounded-full blur-2xl"
-          style={{ background: 'rgba(255,176,32,0.04)' }}
-        />
+      <ParallaxLayer speed={0.2} zIndex={2} className="opacity-80">
+        <div className="absolute top-[35%] right-[5%] w-[350px] h-[180px]">
+          <Image
+            src="/images/zones/z01-sky/z01-03-cloud-b.png"
+            alt="Cloud B"
+            fill
+            className="object-contain opacity-50"
+          />
+        </div>
       </ParallaxLayer>
 
       <div

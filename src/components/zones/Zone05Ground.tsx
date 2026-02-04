@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useEffect } from 'react';
+import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useTranslations } from 'next-intl';
@@ -36,110 +37,69 @@ export function Zone05Ground() {
       className="absolute left-0 w-full overflow-hidden"
       style={{ top: '7370px', height: '1300px' }}
     >
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'linear-gradient(180deg, #1a1e28 0%, #151515 50%, #080808 100%)',
-        }}
-      />
+      <div className="absolute inset-0">
+        <Image
+          src="/images/zones/z05-ground/z05-01-dai-pai-dong.png"
+          alt="Dai Pai Dong"
+          fill
+          className="object-cover"
+        />
+      </div>
 
       <ParallaxLayer speed={0.7} zIndex={1}>
         <div className="absolute top-0 left-0 right-0 h-[500px]">
-          <div className="relative w-full h-full flex justify-center">
-            <div
-              className="w-[300px] h-[400px] rounded-t-lg"
-              style={{
-                background: 'linear-gradient(180deg, #1a1e28, #12161e)',
-                border: '1px solid rgba(255,255,255,0.05)',
-              }}
-            >
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[80%] h-3 bg-cyan/20 rounded" />
-              <div
-                className="absolute top-10 left-4 right-4 text-center font-mono text-xs text-green"
-                style={{ textShadow: '0 0 8px var(--green)' }}
-              >
-                雲吞麵 · 粥 · 炒飯
-              </div>
-            </div>
-          </div>
+          <Image
+            src="/images/zones/z05-ground/z05-02-cha-chaan-teng.png"
+            alt="Cha Chaan Teng"
+            fill
+            className="object-contain object-top"
+          />
         </div>
       </ParallaxLayer>
 
       <ParallaxLayer speed={1.0} zIndex={2}>
-        <div className="absolute top-[40%] left-0 right-0 h-[200px]">
-          <div className="flex flex-wrap justify-center gap-2 px-8">
-            {Array.from({ length: 8 }).map((_, i) => (
-              <div
-                key={i}
-                className="w-8 h-8 rounded"
-                style={{
-                  background: ['#ff6666', '#66ff66', '#ff6666', '#66ff66'][i % 4],
-                  opacity: 0.3,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      </ParallaxLayer>
-
-      <ParallaxLayer speed={1.1} zIndex={3}>
-        <div className="absolute bottom-[30%] left-0 right-0 h-[300px]">
-          <div className="relative w-full h-full">
-            <div
-              className="absolute inset-0"
-              style={{
-                background: 'linear-gradient(180deg, transparent, rgba(0,0,0,0.5))',
-              }}
-            />
-            {Array.from({ length: 10 }).map((_, i) => (
-              <div
-                key={i}
-                className="absolute h-full w-[1px]"
-                style={{
-                  left: `${10 + i * 9}%`,
-                  background: 'rgba(255,255,255,0.03)',
-                }}
-              />
-            ))}
-          </div>
+        <div className="absolute inset-0 opacity-60">
+          <Image
+            src="/images/zones/z05-ground/z05-03-pavement.png"
+            alt="Pavement"
+            fill
+            className="object-cover"
+          />
         </div>
       </ParallaxLayer>
 
       <ParallaxLayer speed={1.0} zIndex={4}>
-        <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[200px] h-[120px]">
-          <div
-            className="absolute inset-0 rounded-full"
-            style={{
-              background: 'radial-gradient(ellipse, rgba(30,30,30,0.8), rgba(10,10,10,0.9))',
-              boxShadow: 'inset 0 0 20px rgba(0,0,0,0.5)',
-            }}
+        <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[300px] h-[180px]">
+          <Image
+            src="/images/zones/z05-ground/z05-04-puddle.png"
+            alt="Puddle"
+            fill
+            className="object-contain"
           />
+          <div className="absolute inset-0 mix-blend-overlay opacity-50">
+            <Image
+              src="/images/zones/z05-ground/z05-05-puddle-reflection.png"
+              alt="Puddle Reflection"
+              fill
+              className="object-contain"
+            />
+          </div>
           <div
             ref={rippleRef}
-            className="absolute inset-0 rounded-full border border-white/5"
-          />
-        </div>
-      </ParallaxLayer>
-
-      <ParallaxLayer speed={0.9} zIndex={5}>
-        <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-[180px] h-[100px]">
-          <div
-            className="absolute inset-0 rounded-full blur-sm opacity-60"
-            style={{
-              background: 'linear-gradient(180deg, rgba(255,64,64,0.2), rgba(0,212,255,0.2), rgba(255,176,32,0.2))',
-              transform: 'scaleY(-1)',
-            }}
+            className="absolute inset-0 rounded-full border border-white/20"
+            style={{ transform: 'scale(0.8)' }}
           />
         </div>
       </ParallaxLayer>
 
       <ParallaxLayer speed={1.6} zIndex={6} className="pointer-events-none">
-        <div className="absolute bottom-0 left-0 right-0 h-[100px] blur-[2px] opacity-30">
-          <div className="flex justify-around items-end h-full px-4">
-            <div className="w-4 h-2 bg-amber/30 rounded" />
-            <div className="w-6 h-1 bg-cyan/20 rounded" />
-            <div className="w-3 h-3 bg-green/20 rounded" />
-          </div>
+        <div className="absolute bottom-0 left-0 right-0 h-[200px]">
+          <Image
+            src="/images/zones/z05-ground/z05-06-debris.png"
+            alt="Debris"
+            fill
+            className="object-cover object-bottom"
+          />
         </div>
       </ParallaxLayer>
 
