@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { TOTAL_STEPS } from './constants';
 
 interface RSVPState {
   isModalOpen: boolean;
@@ -31,7 +32,7 @@ export const useRSVPStore = create<RSVPState>((set) => ({
   formData: initialFormData,
   openModal: () => set({ isModalOpen: true }),
   closeModal: () => set({ isModalOpen: false }),
-  nextStep: () => set((state) => ({ currentStep: Math.min(5, state.currentStep + 1) })),
+  nextStep: () => set((state) => ({ currentStep: Math.min(TOTAL_STEPS, state.currentStep + 1) })),
   prevStep: () => set((state) => ({ currentStep: Math.max(1, state.currentStep - 1) })),
   goToStep: (step: number) => set({ currentStep: step }),
   setFormData: (data) => set((state) => ({

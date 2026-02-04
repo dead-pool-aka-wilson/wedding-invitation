@@ -3,6 +3,7 @@
 import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
 import { useRSVPStore } from '@/lib/rsvp/store';
+import { TOTAL_STEPS } from '@/lib/rsvp/constants';
 import { GlassCard } from '@/components/ui';
 
 export function RSVPModal() {
@@ -30,7 +31,7 @@ export function RSVPModal() {
     closeModal();
   };
 
-  const totalSteps = 5;
+  const totalSteps = TOTAL_STEPS;
 
   const handleAttendance = (attending: boolean) => {
     setFormData({ attending });
