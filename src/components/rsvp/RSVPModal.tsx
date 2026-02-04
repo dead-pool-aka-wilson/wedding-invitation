@@ -63,25 +63,29 @@ export function RSVPModal() {
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
-      <div 
+      <button
+        type="button"
         className="absolute inset-0 bg-bg/85 backdrop-blur-2xl"
         onClick={handleClose}
+        aria-label="Close RSVP modal"
       />
       
       <div className="relative z-10 w-full max-w-[360px] mx-4">
         <button
+          type="button"
           onClick={handleClose}
           className="absolute -top-12 right-0 text-dim hover:text-bright transition"
+          aria-label="Close RSVP modal"
         >
           ✕ Close
         </button>
 
         <div className="flex justify-center gap-2 mb-6">
-          {Array.from({ length: totalSteps }).map((_, i) => (
+          {Array.from({ length: totalSteps }, (_, index) => index + 1).map((step) => (
             <div
-              key={i}
+              key={step}
               className={`w-2 h-2 rounded-full transition-all ${
-                i + 1 <= currentStep ? 'bg-green' : 'bg-white/20'
+                step <= currentStep ? 'bg-green' : 'bg-white/20'
               }`}
             />
           ))}
@@ -93,12 +97,14 @@ export function RSVPModal() {
               <h2 className="text-xl text-bright">{t('attendance')}</h2>
               <div className="flex flex-col gap-3">
                 <button
+                  type="button"
                   onClick={() => handleAttendance(true)}
                   className="w-full py-4 rounded-xl bg-green/20 border border-green/30 text-bright hover:bg-green/30 transition"
                 >
                   🎉 {t('yes')}
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleAttendance(false)}
                   className="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-dim hover:bg-white/10 transition"
                 >
@@ -114,6 +120,7 @@ export function RSVPModal() {
               <div className="grid grid-cols-4 gap-2">
                 {[1, 2, 3, 4].map((count) => (
                   <button
+                    type="button"
                     key={count}
                     onClick={() => handleHeadcount(count)}
                     className={`py-4 rounded-xl border text-lg transition ${
@@ -134,12 +141,14 @@ export function RSVPModal() {
               <h2 className="text-xl text-bright">{t('bus_to')}</h2>
               <div className="flex flex-col gap-3">
                 <button
+                  type="button"
                   onClick={() => handleBusTo(true)}
                   className="w-full py-4 rounded-xl bg-amber/20 border border-amber/30 text-bright hover:bg-amber/30 transition"
                 >
                   🚌 {t('use_bus')}
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleBusTo(false)}
                   className="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-dim hover:bg-white/10 transition"
                 >
@@ -154,18 +163,21 @@ export function RSVPModal() {
               <h2 className="text-xl text-bright">{t('bus_from')}</h2>
               <div className="flex flex-col gap-3">
                 <button
+                  type="button"
                   onClick={() => handleBusFrom('same_day')}
                   className="w-full py-4 rounded-xl bg-amber/20 border border-amber/30 text-bright hover:bg-amber/30 transition"
                 >
                   {t('same_day')}
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleBusFrom('next_morning')}
                   className="w-full py-4 rounded-xl bg-purple/20 border border-purple/30 text-bright hover:bg-purple/30 transition"
                 >
                   {t('next_morning')}
                 </button>
                 <button
+                  type="button"
                   onClick={() => handleBusFrom('self')}
                   className="w-full py-4 rounded-xl bg-white/5 border border-white/10 text-dim hover:bg-white/10 transition"
                 >
@@ -186,6 +198,7 @@ export function RSVPModal() {
               </p>
               <div className="flex flex-col gap-2 pt-4">
                 <button
+                  type="button"
                   onClick={handleClose}
                   className="w-full py-3 rounded-xl bg-cyan/20 border border-cyan/30 text-bright hover:bg-cyan/30 transition"
                 >
@@ -197,6 +210,7 @@ export function RSVPModal() {
 
           {currentStep > 1 && currentStep < 5 && (
             <button
+              type="button"
               onClick={prevStep}
               className="mt-6 text-sm text-dim hover:text-bright transition"
             >
