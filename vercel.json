@@ -15,7 +15,7 @@
   ],
   "rewrites": [
     {
-      "source": "/:path((?!api|_next|assets|favicon|images).*)",
+      "source": "/:path((?!api|_next|assets|favicon|images|en|ko).*)",
       "destination": "/ko/:path*"
     }
   ]
