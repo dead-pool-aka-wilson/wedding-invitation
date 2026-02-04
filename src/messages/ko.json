@@ -21,10 +21,12 @@
     "address": "서울특별시 ◯◯구 ◯◯동 ◯◯번지",
     "subway": "지하철",
     "bus": "버스",
-    "parking": "주차"
+    "parking": "주차",
+    "map_placeholder": "지도"
   },
   "gallery": {
-    "title": "갤러리"
+    "title": "갤러리",
+    "photo": "사진 {num}"
   },
   "account": {
     "title": "축의금 안내",
@@ -51,8 +53,12 @@
     "same_day": "당일",
     "next_morning": "다음날 아침",
     "complete": "감사합니다!",
+    "complete_attending": "결혼식에서 뵙겠습니다!",
+    "complete_not_attending": "다음에 꼭 뵙겠습니다.",
     "view_invitation": "초대장 보기",
     "share": "공유하기",
-    "edit": "수정하기"
+    "edit": "수정하기",
+    "back": "뒤로",
+    "close": "닫기"
   }
 }

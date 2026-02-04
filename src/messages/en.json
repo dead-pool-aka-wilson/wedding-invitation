@@ -21,10 +21,12 @@
     "address": "◯◯ District, Seoul",
     "subway": "Subway",
     "bus": "Bus",
-    "parking": "Parking"
+    "parking": "Parking",
+    "map_placeholder": "Map"
   },
   "gallery": {
-    "title": "Gallery"
+    "title": "Gallery",
+    "photo": "Photo {num}"
   },
   "account": {
     "title": "Gift",
@@ -51,8 +53,12 @@
     "same_day": "Same day",
     "next_morning": "Next morning",
     "complete": "Thank you!",
+    "complete_attending": "We look forward to seeing you at the wedding!",
+    "complete_not_attending": "We hope to see you another time.",
     "view_invitation": "View Invitation",
     "share": "Share",
-    "edit": "Edit Response"
+    "edit": "Edit Response",
+    "back": "Back",
+    "close": "Close"
   }
 }

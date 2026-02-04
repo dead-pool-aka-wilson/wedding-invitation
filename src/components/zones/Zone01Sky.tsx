@@ -58,7 +58,7 @@ export function Zone01Sky() {
       </ParallaxLayer>
 
       <div
-        className="absolute bottom-0 left-0 right-0 h-[30%] z-3"
+        className="absolute bottom-0 left-0 right-0 h-[30%] z-[3]"
         style={{
           background: 'radial-gradient(ellipse at 50% 100%, rgba(255,176,32,0.06), transparent)',
         }}

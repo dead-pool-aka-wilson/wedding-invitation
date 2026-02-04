@@ -48,7 +48,11 @@ export function RSVPModal() {
 
   const handleBusTo = (useBus: boolean) => {
     setFormData({ busTo: useBus });
-    nextStep();
+    if (useBus) {
+      nextStep();
+    } else {
+      goToStep(totalSteps);
+    }
   };
 
   const handleBusFrom = (option: 'same_day' | 'next_morning' | 'self') => {
@@ -176,8 +180,8 @@ export function RSVPModal() {
               <h2 className="text-2xl text-bright">{t('complete')}</h2>
               <p className="text-dim">
                 {formData.attending 
-                  ? '결혼식에서 뵙겠습니다!' 
-                  : '다음에 꼭 뵙겠습니다.'}
+                  ? t('complete_attending') 
+                  : t('complete_not_attending')}
               </p>
               <div className="flex flex-col gap-2 pt-4">
                 <button

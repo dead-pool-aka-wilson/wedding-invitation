@@ -11,7 +11,9 @@ import { GlassCard } from '@/components/ui';
 gsap.registerPlugin(ScrollTrigger);
 
 export function Zone05Ground() {
-  const t = useTranslations('closing');
+  const t = useTranslations();
+  const tClosing = useTranslations('closing');
+  const tCover = useTranslations('cover');
   const zoneRef = useRef<HTMLDivElement>(null);
   const rippleRef = useRef<HTMLDivElement>(null);
 
@@ -106,12 +108,12 @@ export function Zone05Ground() {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center px-6">
         <div className="w-full max-w-[320px] text-center">
           <GlassCard className="mb-8">
-            <h2 className="text-2xl text-bright mb-4">{t('title')}</h2>
-            <p className="text-white/60">{t('message')}</p>
+            <h2 className="text-2xl text-bright mb-4">{tClosing('title')}</h2>
+            <p className="text-white/60">{tClosing('message')}</p>
           </GlassCard>
 
           <p className="text-sm text-white/30 font-mono">
-            💕 2025. 4. 4
+            💕 {tCover('date')}
           </p>
         </div>
       </div>

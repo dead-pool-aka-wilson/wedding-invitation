@@ -84,7 +84,7 @@ export function Zone03MidLevels() {
             <div
               className="w-full h-[200px] rounded-lg bg-surface-3 flex items-center justify-center mb-4"
             >
-              <span className="text-dim text-sm">Map Placeholder</span>
+              <span className="text-dim text-sm">{t('map_placeholder')}</span>
             </div>
 
             <div className="grid grid-cols-3 gap-2 text-center">

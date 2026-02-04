@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -12,6 +12,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function Zone04Street() {
   const t = useTranslations();
+  const [copiedAccount, setCopiedAccount] = useState<string | null>(null);
+
+  const handleCopy = async (account: string) => {
+    try {
+      await navigator.clipboard.writeText(account);
+      setCopiedAccount(account);
+      setTimeout(() => setCopiedAccount(null), 2000);
+    } catch (err) {
+      console.error('Failed to copy:', err);
+    }
+  };
   const zoneRef = useRef<HTMLDivElement>(null);
   const tramRef = useRef<HTMLDivElement>(null);
   const taxiRef = useRef<HTMLDivElement>(null);
@@ -173,7 +184,7 @@ export function Zone04Street() {
                   boxShadow: `0 0 15px ${['rgba(0,212,255,0.3)', 'rgba(255,61,138,0.3)', 'rgba(255,176,32,0.3)'][num % 3]}`,
                 }}
               >
-                <span className="text-dim text-sm">Photo {num}</span>
+                <span className="text-dim text-sm">{t('gallery.photo', { num })}</span>
               </div>
             ))}
           </div>
@@ -194,8 +205,12 @@ export function Zone04Street() {
                 <div className="mt-2 p-3 space-y-2">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-dim">◯◯은행 123-456-789</span>
-                    <button type="button" className="text-cyan text-xs hover:underline">
-                      {t('account.copy')}
+                    <button 
+                      type="button" 
+                      onClick={() => handleCopy('123-456-789')}
+                      className="text-cyan text-xs hover:underline"
+                    >
+                      {copiedAccount === '123-456-789' ? t('account.copied') : t('account.copy')}
                     </button>
                   </div>
                 </div>
@@ -209,8 +224,12 @@ export function Zone04Street() {
                 <div className="mt-2 p-3 space-y-2">
                   <div className="flex justify-between items-center text-sm">
                     <span className="text-dim">◯◯은행 987-654-321</span>
-                    <button type="button" className="text-cyan text-xs hover:underline">
-                      {t('account.copy')}
+                    <button 
+                      type="button" 
+                      onClick={() => handleCopy('987-654-321')}
+                      className="text-cyan text-xs hover:underline"
+                    >
+                      {copiedAccount === '987-654-321' ? t('account.copied') : t('account.copy')}
                     </button>
                   </div>
                 </div>
