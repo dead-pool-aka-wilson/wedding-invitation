@@ -12,6 +12,7 @@ export function RSVPModal() {
     currentStep, 
     nextStep, 
     prevStep, 
+    goToStep,
     formData, 
     setFormData,
     reset 
@@ -29,16 +30,14 @@ export function RSVPModal() {
     closeModal();
   };
 
+  const totalSteps = 5;
+
   const handleAttendance = (attending: boolean) => {
     setFormData({ attending });
     if (attending) {
       nextStep();
     } else {
-      setFormData({ attending: false });
-      nextStep();
-      nextStep();
-      nextStep();
-      nextStep();
+      goToStep(totalSteps);
     }
   };
 
@@ -56,8 +55,6 @@ export function RSVPModal() {
     setFormData({ busFrom: option });
     nextStep();
   };
-
-  const totalSteps = 5;
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center">
