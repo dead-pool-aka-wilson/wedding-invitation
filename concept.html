@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HK Parallax — AI-Prompt Filenames v3.2</title>
+<title>HK Parallax — AI-Prompt Filenames v3.3</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -91,13 +91,16 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
 <body>
 
 <div class="hero">
-  <div class="badge">AI-Prompt Image Filenames v3.2</div>
+  <div class="badge">AI-Prompt Image Filenames v3.3</div>
   <h1>Filename = Prompt</h1>
   <p>Every image filename is a complete AI generation prompt. Copy the filename, paste it into Midjourney/DALL-E/Flux/Stable Diffusion — it produces the exact asset needed.</p>
   <div class="meta-row">
-    <div><span>Total</span>28 PNG images</div>
+    <div><span>Total</span>30 PNG images</div>
     <div><span>Style</span>Photorealistic Cinematic</div>
-    <div><span>Canvas</span>360 × 8000 px</div>
+    <div><span>Viewport</span>100vw (responsive)</div>
+    <div><span>Ref. Width</span>390 px (iPhone 14/15)</div>
+    <div><span>Scroll Depth</span>8 670 px</div>
+    <div><span>Retina</span>@2x 780 · @3x 1170 px</div>
     <div><span>Zones</span>5</div>
   </div>
 </div>
@@ -111,7 +114,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
     <p>Each filename follows this pattern: <code>[style]_[subject]_[details]_[camera]_[lighting]_[mood]_[color_notes].png</code></p>
     <p style="margin-top:8px;">Style keywords always present: <code>photorealistic</code>, <code>cinematic</code>, <code>8k_detail</code>, and context-appropriate terms like <code>shallow_depth_of_field</code>, <code>long_exposure</code>, <code>dramatic_lighting</code>, <code>moody_atmosphere</code>.</p>
     <p style="margin-top:8px;">To use: copy the filename (without <code>.png</code>), replace underscores with spaces, and paste into your AI image generator. Add <code>--ar</code> aspect ratio as noted in the size tag.</p>
+  
+  <div class="principle" style="border-color:rgba(0,212,255,0.15);">
+    <h4>📱 MOBILE RESPONSIVE SIZING</h4>
+    <p>All dimensions are <strong>@1× CSS pixels</strong> for a <code>390px</code> reference viewport (iPhone 14/15/16). The design is fully responsive — <code>width: 100vw</code> with images scaling via <code>object-fit: cover</code>.</p>
+    <p style="margin-top:8px;"><strong>Retina generation:</strong> For sharp display on HiDPI screens, generate each asset at <strong>2–3×</strong> the listed size (e.g., a <code>390×870</code> asset → generate at <code>780×1740</code> @2x or <code>1170×2610</code> @3x). Most AI tools natively generate ≥ 1024px — use <code>--ar</code> at the listed aspect ratio, then upscale with Real-ESRGAN / Topaz if needed.</p>
+    <p style="margin-top:8px;"><strong>Aspect ratio priority:</strong> The <code>--ar</code> ratio matters more than exact pixels. AI tools generate at their native resolution; you scale to fit in CSS. Each asset card shows the AR value.</p>
   </div>
+</div>
 </div>
 
 <!-- ════════════════════════════════════════════ -->
@@ -121,7 +131,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="zh">
     <div class="zh-tag zh-sky">ZONE 01</div>
     <div class="zh-info"><h3>Night Sky</h3><p>Wedding Cover — Names float in the sky</p></div>
-    <div class="zh-px">0 – 800 px · 3 images</div>
+    <div class="zh-px">0 – 870 px · 3 images</div>
   </div>
 
   <!-- Z01-01 -->
@@ -131,7 +141,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
       <div class="ac-tags">
         <span class="tag t-png">PNG</span>
         <span class="tag t-layer">L0 · 0.05×</span>
-        <span class="tag t-size">360×800</span>
+        <span class="tag t-size">390×870</span>
         <span class="tag t-alpha">ALPHA</span>
       </div>
     </div>
@@ -160,7 +170,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
       <div class="ac-tags">
         <span class="tag t-png">PNG</span>
         <span class="tag t-layer">L2 · 0.15×</span>
-        <span class="tag t-size">500×300</span>
+        <span class="tag t-size">540×325</span>
         <span class="tag t-alpha">ALPHA</span>
       </div>
     </div>
@@ -189,7 +199,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
       <div class="ac-tags">
         <span class="tag t-png">PNG</span>
         <span class="tag t-layer">L2 · 0.2×</span>
-        <span class="tag t-size">500×300</span>
+        <span class="tag t-size">540×325</span>
         <span class="tag t-alpha">ALPHA</span>
       </div>
     </div>
@@ -211,7 +221,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
     </div>
   </div>
 
-  <div class="conn"><strong>Z01 → Z02 Edge:</strong> Amber glow at bottom of <code>Z01-01</code> blends into top of <code>Z02-01</code>. <code>200px gradient overlap</code>. Same warm light illuminates tower tops.</div>
+  <div class="conn"><strong>Z01 → Z02 Edge:</strong> Amber glow at bottom of <code>Z01-01</code> blends into top of <code>Z02-01</code>. <code>220px gradient overlap</code>. Same warm light illuminates tower tops.</div>
 </div>
 
 <!-- ════════════════════════════════════════════ -->
@@ -221,14 +231,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="zh">
     <div class="zh-tag zh-skyline">ZONE 02</div>
     <div class="zh-info"><h3>Skyline & Towers</h3><p>Greeting + Date/Time — Cards between iconic towers</p></div>
-    <div class="zh-px">800 – 2400 px · 7 images</div>
+    <div class="zh-px">870 – 2 600 px · 7 images</div>
   </div>
 
   <!-- Z02-01 -->
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-01</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.3×</span><span class="tag t-size">360×600</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.3×</span><span class="tag t-size">390×650</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -246,15 +256,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-02</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.5×</span><span class="tag t-size">360×1200</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.5×</span><span class="tag t-size">390×1300</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
-      <div class="fp-name" onclick="navigator.clipboard.writeText(this.innerText.replace('📋 click to copy','').replace('.png','').replaceAll('_',' ').trim())">photorealistic_hongkong_island_iconic_skyscrapers_night_IFC_two_bank_of_china_tower_the_centre_neon_LED_strips_cheung_kong_centre_glass_curtain_wall_warm_window_lights_upper_halves_only_cropped_bottom_cinematic_dramatic_low_angle_looking_up_8k_detail_200px_center_gap_between_towers<span class="fp-ext">.png</span></div>
+      <div class="fp-name" onclick="navigator.clipboard.writeText(this.innerText.replace('📋 click to copy','').replace('.png','').replaceAll('_',' ').trim())">photorealistic_hongkong_island_iconic_skyscrapers_night_IFC_two_bank_of_china_tower_the_centre_neon_LED_strips_cheung_kong_centre_glass_curtain_wall_warm_window_lights_upper_halves_only_cropped_bottom_cinematic_dramatic_low_angle_looking_up_8k_detail_220px_center_gap_between_towers<span class="fp-ext">.png</span></div>
     </div>
     <div class="ac-details">
       <div class="detail-grid">
-        <div class="detail-col"><h5 style="color:var(--cyan);">Key Details</h5><p>IFC Two (silver-blue glass, 415m), Bank of China (triangular X-bracing), The Centre (color-changing LED tubes), Cheung Kong Centre (rectangular). 60% windows lit. 200px center gap for content cards. Low angle 10–15° above horizontal.</p></div>
+        <div class="detail-col"><h5 style="color:var(--cyan);">Key Details</h5><p>IFC Two (silver-blue glass, 415m), Bank of China (triangular X-bracing), The Centre (color-changing LED tubes), Cheung Kong Centre (rectangular). 60% windows lit. 220px center gap for content cards. Low angle 10–15° above horizontal.</p></div>
         <div class="detail-col"><h5 style="color:var(--red);">Negative</h5><p class="neg">No ground, no street, no cars, no water, no complete buildings (cropped at bottom), no daytime, no laser beams, no cartoon style</p></div>
       </div>
     </div>
@@ -264,7 +274,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-03</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">140×1200</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">150×1300</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -282,7 +292,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-04</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">140×1200</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">150×1300</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -300,7 +310,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-05</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L2 · 0.15×</span><span class="tag t-size">360×200</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L2 · 0.15×</span><span class="tag t-size">390×220</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -318,7 +328,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-06</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 0.5×</span><span class="tag t-size">360×1200</span><span class="tag t-screen">SCREEN BLEND</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 0.5×</span><span class="tag t-size">390×1300</span><span class="tag t-screen">SCREEN BLEND</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -336,7 +346,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(0,212,255,0.08);color:var(--cyan);">Z02-07</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">360×800</span><span class="tag t-alpha">ALPHA</span><span class="tag t-new">TRANSITION</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">390×870</span><span class="tag t-alpha">ALPHA</span><span class="tag t-new">TRANSITION</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -360,14 +370,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="zh">
     <div class="zh-tag zh-mid">ZONE 03</div>
     <div class="zh-info"><h3>Mid-Levels Escalator & SoHo</h3><p>Wedding Location/Map — Venue beside the escalator</p></div>
-    <div class="zh-px">2400 – 4500 px · 5 images</div>
+    <div class="zh-px">2 600 – 4 880 px · 5 images</div>
   </div>
 
   <!-- Z03-01 -->
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03-01</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.4×</span><span class="tag t-size">360×1600</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.4×</span><span class="tag t-size">390×1730</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -375,7 +385,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
     </div>
     <div class="ac-details">
       <div class="detail-grid">
-        <div class="detail-col"><h5 style="color:var(--pink);">Layout</h5><p>Mid-height perspective (10–15 floors up). 80px vertical gap in center for escalator placement. Colors: #15202e to #1a2535 building mass, #ffe066 windows, #ff8844 warm interiors.</p></div>
+        <div class="detail-col"><h5 style="color:var(--pink);">Layout</h5><p>Mid-height perspective (10–15 floors up). 85px vertical gap in center for escalator placement. Colors: #15202e to #1a2535 building mass, #ffe066 windows, #ff8844 warm interiors.</p></div>
         <div class="detail-col"><h5 style="color:var(--red);">Negative</h5><p class="neg">No modern luxury condos, no glass towers — older residential. No harbor view, no sky at top, no ground at bottom</p></div>
       </div>
     </div>
@@ -385,7 +395,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03-02</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">120×2000</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">130×2170</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -403,7 +413,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03-03</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">200×2000</span><span class="tag t-screen">SCREEN BLEND</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">220×2170</span><span class="tag t-screen">SCREEN BLEND</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -421,7 +431,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03-04</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">360×1400</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">390×1520</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -429,7 +439,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
     </div>
     <div class="ac-details">
       <div class="detail-grid">
-        <div class="detail-col"><h5 style="color:var(--pink);">Details</h5><p>Street 35% frame width. 80px left gap for escalator. Details: folded umbrella, locked bicycle, SOHO street sign. Warm light spilling from doorways.</p></div>
+        <div class="detail-col"><h5 style="color:var(--pink);">Details</h5><p>Street 35% frame width. 85px left gap for escalator. Details: folded umbrella, locked bicycle, SOHO street sign. Warm light spilling from doorways.</p></div>
         <div class="detail-col"><h5 style="color:var(--red);">Negative</h5><p class="neg">No Western chain pubs, no franchise restaurants — independent HK SoHo character. No tourists, no cars, no Chinese neon signs (those are Z04)</p></div>
       </div>
     </div>
@@ -439,7 +449,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,61,138,0.08);color:var(--pink);">Z03-05</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L6 · 1.4×</span><span class="tag t-size">360×400</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L6 · 1.4×</span><span class="tag t-size">390×430</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -463,14 +473,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="zh">
     <div class="zh-tag zh-street">ZONE 04</div>
     <div class="zh-info"><h3>Street Level — Neon, Tram, Taxi</h3><p>Gallery + Gift Accounts — Photos in neon frames, bustling street</p></div>
-    <div class="zh-px">4500 – 6800 px · 9 images</div>
+    <div class="zh-px">4 880 – 7 370 px · 9 images</div>
   </div>
 
   <!-- Z04-01 -->
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-01</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.4×</span><span class="tag t-size">360×1800</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L1 · 0.4×</span><span class="tag t-size">390×1950</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -488,7 +498,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-02</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 0.85×</span><span class="tag t-size">360×2000</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 0.85×</span><span class="tag t-size">390×2170</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -506,15 +516,15 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-03</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">360×2000</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">390×2170</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt ⭐ HERO IMAGE</div>
-      <div class="fp-name" onclick="navigator.clipboard.writeText(this.innerText.replace('📋 click to copy','').replace('.png','').replaceAll('_',' ').trim())">photorealistic_hongkong_large_bright_neon_signs_near_side_street_level_night_traditional_bent_glass_neon_tubes_chinese_english_text_red_cha_chaan_teng_茶餐廳_amber_gold_jewelry_金行_cyan_blue_BAR_cocktail_icon_green_pawnshop_押_pink_restaurant_酒樓_visible_tube_construction_metal_frames_junction_boxes_power_cables_warm_glow_halos_overlapping_depth_close_enough_to_touch_cinematic_dramatic_lighting_8k_ultra_detail_200px_center_gap<span class="fp-ext">.png</span></div>
+      <div class="fp-name" onclick="navigator.clipboard.writeText(this.innerText.replace('📋 click to copy','').replace('.png','').replaceAll('_',' ').trim())">photorealistic_hongkong_large_bright_neon_signs_near_side_street_level_night_traditional_bent_glass_neon_tubes_chinese_english_text_red_cha_chaan_teng_茶餐廳_amber_gold_jewelry_金行_cyan_blue_BAR_cocktail_icon_green_pawnshop_押_pink_restaurant_酒樓_visible_tube_construction_metal_frames_junction_boxes_power_cables_warm_glow_halos_overlapping_depth_close_enough_to_touch_cinematic_dramatic_lighting_8k_ultra_detail_220px_center_gap<span class="fp-ext">.png</span></div>
     </div>
     <div class="ac-details">
       <div class="detail-grid">
-        <div class="detail-col"><h5 style="color:var(--amber);">⭐ HERO</h5><p>Most visually impactful asset. Signs protruding from both edges — immersive wrap. Visible neon tube construction, aging, flickering sections. 200px center gap for photo gallery content. Traditional Chinese + English.</p></div>
+        <div class="detail-col"><h5 style="color:var(--amber);">⭐ HERO</h5><p>Most visually impactful asset. Signs protruding from both edges — immersive wrap. Visible neon tube construction, aging, flickering sections. 220px center gap for photo gallery content. Traditional Chinese + English.</p></div>
         <div class="detail-col"><h5 style="color:var(--red);">Negative</h5><p class="neg">No modern LED lightbox — traditional bent-glass neon ONLY. No Japanese text — HK Chinese traditional + English. No clean/new — aged character</p></div>
       </div>
     </div>
@@ -524,7 +534,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-04</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">360×2000</span><span class="tag t-screen">SCREEN BLEND</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">390×2170</span><span class="tag t-screen">SCREEN BLEND</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -542,7 +552,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-05</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0× +→</span><span class="tag t-size">100×140</span><span class="tag t-alpha">ALPHA</span><span class="tag t-scroll">SCROLL-DRIVEN</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0× +→</span><span class="tag t-size">110×150</span><span class="tag t-alpha">ALPHA</span><span class="tag t-scroll">SCROLL-DRIVEN</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -550,7 +560,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
     </div>
     <div class="ac-details">
       <div class="detail-grid">
-        <div class="detail-col"><h5 style="color:var(--amber);">Motion</h5><p>Enters left → exits right. translateX mapped to scroll position in Z04 (4500–6800px).</p></div>
+        <div class="detail-col"><h5 style="color:var(--amber);">Motion</h5><p>Enters left → exits right. translateX mapped to scroll position in Z04 (4880–7370px).</p></div>
         <div class="detail-col"><h5 style="color:var(--red);">Negative</h5><p class="neg">No modern TramOramic — classic old-style. No blue/green/party tram — red. Strict side profile. No ground, no tracks, no background</p></div>
       </div>
     </div>
@@ -560,7 +570,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-06</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · tram-locked</span><span class="tag t-size">140×60</span><span class="tag t-screen">SCREEN BLEND</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · tram-locked</span><span class="tag t-size">150×65</span><span class="tag t-screen">SCREEN BLEND</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -578,7 +588,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-07</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0× +←</span><span class="tag t-size">60×35</span><span class="tag t-alpha">ALPHA</span><span class="tag t-scroll">SCROLL-DRIVEN</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0× +←</span><span class="tag t-size">65×38</span><span class="tag t-alpha">ALPHA</span><span class="tag t-scroll">SCROLL-DRIVEN</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -586,7 +596,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
     </div>
     <div class="ac-details">
       <div class="detail-grid">
-        <div class="detail-col"><h5 style="color:var(--amber);">Motion</h5><p>Enters right → exits left (OPPOSITE to tram). Offset 300px in scroll timing (starts at 4800px).</p></div>
+        <div class="detail-col"><h5 style="color:var(--amber);">Motion</h5><p>Enters right → exits left (OPPOSITE to tram). Offset 325px in scroll timing (starts at 5200px).</p></div>
         <div class="detail-col"><h5 style="color:var(--red);">Negative</h5><p class="neg">No green taxi (NT only) — red urban. Strict side profile facing LEFT. No driver, no background</p></div>
       </div>
     </div>
@@ -596,7 +606,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-08</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0×</span><span class="tag t-size">360×50</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0×</span><span class="tag t-size">390×55</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -614,7 +624,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,176,32,0.08);color:var(--amber);">Z04-09</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.05×</span><span class="tag t-size">360×600</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.05×</span><span class="tag t-size">390×650</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -638,14 +648,14 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="zh">
     <div class="zh-tag zh-ground">ZONE 05</div>
     <div class="zh-info"><h3>Ground Detail — Dai Pai Dong & Puddle</h3><p>Wedding Closing — Final message reflected in puddle</p></div>
-    <div class="zh-px">6800 – 8000 px · 6 images</div>
+    <div class="zh-px">7 370 – 8 670 px · 6 images</div>
   </div>
 
   <!-- Z05-01 -->
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05-01</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">360×900</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L3 · 0.7×</span><span class="tag t-size">390×975</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -663,7 +673,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05-02</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">360×400</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L4 · 1.0×</span><span class="tag t-size">390×430</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -681,7 +691,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05-03</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.1×</span><span class="tag t-size">360×600</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.1×</span><span class="tag t-size">390×650</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -699,7 +709,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05-04</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0×</span><span class="tag t-size">360×400</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 1.0×</span><span class="tag t-size">390×430</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -717,7 +727,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05-05</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 0.9×</span><span class="tag t-size">360×400</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L5 · 0.9×</span><span class="tag t-size">390×430</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt ⭐ EMOTIONAL CLIMAX</div>
@@ -735,7 +745,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
   <div class="ac">
     <div class="ac-top">
       <div class="ac-id" style="background:rgba(255,64,64,0.08);color:var(--red);">Z05-06</div>
-      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L6 · 1.6×</span><span class="tag t-size">360×200</span><span class="tag t-alpha">ALPHA</span></div>
+      <div class="ac-tags"><span class="tag t-png">PNG</span><span class="tag t-layer">L6 · 1.6×</span><span class="tag t-size">390×220</span><span class="tag t-alpha">ALPHA</span></div>
     </div>
     <div class="filename-prompt">
       <div class="fp-label">Filename = Prompt</div>
@@ -752,7 +762,7 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);line-height:
 
 <!-- FOOTER -->
 <div class="footer">
-  <p>HK Parallax — AI-Prompt Filenames v3.2 — 28 PNG Images — Copy filename, paste as prompt, generate</p>
+  <p>HK Parallax — AI-Prompt Filenames v3.3 — 30 PNG Images — Mobile-Responsive 390px ref · @2x/@3x Retina</p>
 </div>
 
 </body>

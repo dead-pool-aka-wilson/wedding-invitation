@@ -1,0 +1,64 @@
+{
+  "cover": {
+    "invitation": "결혼 초대장",
+    "date": "2025. 4. 4 토요일",
+    "scroll": "아래로 스크롤"
+  },
+  "greeting": {
+    "title": "인사말",
+    "message": "서로의 마음을 확인하고 한 길을 함께 걸으려 합니다",
+    "groom_parents": "◯◯◯ · ◯◯◯의 아들",
+    "bride_parents": "◯◯◯ · ◯◯◯의 딸"
+  },
+  "datetime": {
+    "title": "날짜 및 시간",
+    "date": "2025년 4월 4일 토요일",
+    "time": "오후 2시",
+    "venue": "◯◯◯ 웨딩홀"
+  },
+  "location": {
+    "title": "오시는 길",
+    "address": "서울특별시 ◯◯구 ◯◯동 ◯◯번지",
+    "subway": "지하철",
+    "bus": "버스",
+    "parking": "주차",
+    "map_placeholder": "지도"
+  },
+  "gallery": {
+    "title": "갤러리",
+    "photo": "사진 {num}"
+  },
+  "account": {
+    "title": "축의금 안내",
+    "groom_side": "신랑측 계좌",
+    "bride_side": "신부측 계좌",
+    "copy": "복사하기",
+    "copied": "복사되었습니다"
+  },
+  "closing": {
+    "title": "감사합니다",
+    "message": "결혼식에서 뵙겠습니다"
+  },
+  "rsvp": {
+    "button": "참석 의사 전달",
+    "title": "참석 의사 전달",
+    "attendance": "참석하실 수 있으신가요?",
+    "yes": "참석합니다",
+    "no": "불참합니다",
+    "headcount": "몇 분이서 오시나요?",
+    "bus_to": "서울→대구 버스 이용하시나요?",
+    "bus_from": "돌아오는 버스는요?",
+    "use_bus": "이용할게요",
+    "self": "직접 갈게요",
+    "same_day": "당일",
+    "next_morning": "다음날 아침",
+    "complete": "감사합니다!",
+    "complete_attending": "결혼식에서 뵙겠습니다!",
+    "complete_not_attending": "다음에 꼭 뵙겠습니다.",
+    "view_invitation": "초대장 보기",
+    "share": "공유하기",
+    "edit": "수정하기",
+    "back": "뒤로",
+    "close": "닫기"
+  }
+}
