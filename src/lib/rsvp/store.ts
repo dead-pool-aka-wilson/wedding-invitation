@@ -13,6 +13,7 @@ interface RSVPState {
   closeModal: () => void;
   nextStep: () => void;
   prevStep: () => void;
+  goToStep: (step: number) => void;
   setFormData: (data: Partial<RSVPState['formData']>) => void;
   reset: () => void;
 }
@@ -32,6 +33,7 @@ export const useRSVPStore = create<RSVPState>((set) => ({
   closeModal: () => set({ isModalOpen: false }),
   nextStep: () => set((state) => ({ currentStep: state.currentStep + 1 })),
   prevStep: () => set((state) => ({ currentStep: Math.max(1, state.currentStep - 1) })),
+  goToStep: (step: number) => set({ currentStep: step }),
   setFormData: (data) => set((state) => ({
     formData: { ...state.formData, ...data },
   })),

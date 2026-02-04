@@ -10,7 +10,7 @@ check the html file start with hk_ai which is updated concept. replace concept.h
 ### Context
 - Source file: `hk_ai_prompt_filenames_v3_3.html`
 - Concept version: v3.3
-- Total images: 28 PNG
+- Total images: 30 PNG
 - Viewport: 100vw (responsive), 390px reference (iPhone 14/15)
 - Scroll depth: 8,670px
 - Retina: @2x 780px, @3x 1170px
@@ -31,7 +31,7 @@ check the html file start with hk_ai which is updated concept. replace concept.h
 | Z02 | Skyline & Towers | 870-2600px | 7 |
 | Z03 | Mid-Levels Escalator | 2600-4880px | 5 |
 | Z04 | Street Level (Neon) | 4880-7370px | 9 |
-| Z05 | Ground (Dai Pai Dong) | 7370-8670px | 4 |
+| Z05 | Ground (Dai Pai Dong) | 7370-8670px | 6 |
 
 ### GitHub Issue
 - Issue #6: feat: Implement HK Parallax Wedding Invitation v3.3

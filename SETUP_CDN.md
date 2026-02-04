@@ -68,5 +68,5 @@ Configure custom domain if needed.
 
 ## Notes
 - Images are generated using Gemini Image Pro 3
-- 28 total PNG images across 5 zones
+- 30 total PNG images across 5 zones
 - Retina support: @2x (780px) and @3x (1170px)

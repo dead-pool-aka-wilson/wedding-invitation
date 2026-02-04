@@ -36,7 +36,8 @@ vi.mock('gsap', () => ({
 
 // Mock next-cloudinary
 vi.mock('next-cloudinary', () => ({
-  CldImage: ({ src, alt, ...props }: { src: string; alt: string }) => {
-    return `<img src="${src}" alt="${alt}" />`;
+  CldImage: ({ src, alt, ...props }: { src: string; alt: string; [key: string]: unknown }) => {
+    const React = require('react');
+    return React.createElement('img', { src, alt, ...props });
   },
 }));
