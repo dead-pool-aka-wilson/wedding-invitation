@@ -1,0 +1,58 @@
+{
+  "cover": {
+    "invitation": "Wedding Invitation",
+    "date": "Saturday, April 4, 2025",
+    "scroll": "Scroll Down"
+  },
+  "greeting": {
+    "title": "Greeting",
+    "message": "We are getting married and would love for you to join us",
+    "groom_parents": "Son of Mr. & Mrs. ◯◯◯",
+    "bride_parents": "Daughter of Mr. & Mrs. ◯◯◯"
+  },
+  "datetime": {
+    "title": "Date & Time",
+    "date": "Saturday, April 4, 2025",
+    "time": "2:00 PM",
+    "venue": "◯◯◯ Wedding Hall"
+  },
+  "location": {
+    "title": "Location",
+    "address": "◯◯ District, Seoul",
+    "subway": "Subway",
+    "bus": "Bus",
+    "parking": "Parking"
+  },
+  "gallery": {
+    "title": "Gallery"
+  },
+  "account": {
+    "title": "Gift",
+    "groom_side": "Groom's Family",
+    "bride_side": "Bride's Family",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "closing": {
+    "title": "Thank You",
+    "message": "We look forward to seeing you"
+  },
+  "rsvp": {
+    "button": "RSVP",
+    "title": "RSVP",
+    "attendance": "Will you be attending?",
+    "yes": "Yes, I'll be there",
+    "no": "Sorry, I can't make it",
+    "headcount": "How many guests?",
+    "bus_to": "Bus from Seoul to Daegu?",
+    "bus_from": "Return bus?",
+    "use_bus": "Yes, please",
+    "self": "No, thanks",
+    "same_day": "Same day",
+    "next_morning": "Next morning",
+    "complete": "Thank you!",
+    "view_invitation": "View Invitation",
+    "share": "Share",
+    "edit": "Edit Response"
+  }
+}
